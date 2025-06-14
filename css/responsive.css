@@ -1,0 +1,181 @@
+/* ============================= */
+/* 📱 Mobile Navigation */
+/* ============================= */
+@media (max-width: 991px) {
+  #nav-toggle {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--color-text-dark);
+    z-index: 1001;
+  }
+
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    background-color: var(--color-bg-light);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 1rem 0;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    border-radius: 0 0 12px 12px;
+    z-index: 1000;
+    animation: slideDown 0.3s ease forwards;
+  }
+
+  .nav-menu.nav-menu-active {
+    display: flex;
+  }
+
+  .nav-menu li {
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    text-align: left;
+  }
+
+  .nav-menu li a {
+    display: block;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    font-size: 1.2rem;
+    color: var(--color-text-dark);
+    text-align: left;
+    transition: background 0.2s;
+  }
+
+  .nav-menu li a:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  .has-submenu {
+    position: relative;
+  }
+
+  .has-submenu > a::after {
+    float: right;
+    margin-left: 5px;
+  }
+
+ .submenu {
+  display: none;
+  flex-direction: column;
+  background-color: var(--color-bg-light); // Or solid color like #fff ✅
+  padding: 0.5rem 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); // Optional for better visibility
+  border-radius: 0 0 8px 8px;
+  z-index: 1002; // Keep it above menu if needed
+  animation: fadeSlideDown 0.3s ease;
+}
+
+
+  .has-submenu.open .submenu {
+    display: flex;
+  }
+
+  .submenu li a {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+  }
+
+  .submenu li a:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+}
+
+/* ============================= */
+/* 🎬 Animations */
+/* ============================= */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* ============================= */
+/* 👣 Footer Responsive */
+/* ============================= */
+@media (max-width: 768px) {
+  .footer .container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer ul.list-inline {
+    justify-content: center;
+    gap: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .footer .social-footer {
+    justify-content: center;
+    margin-top: 1.2rem;
+  }
+
+  .footer p.mb-0 {
+    margin-top: 2rem;
+  }
+}
+
+/* ============================= */
+/* ✨ Footer Fade Animation */
+/* ============================= */
+.footer,
+.footer .container,
+.footer ul.list-inline li a,
+.footer .social-footer a,
+.footer p.mb-0 {
+  animation: fadeInUp 0.8s ease forwards;
+  opacity: 0;
+}
+
+.footer {
+  animation-delay: 0.2s;
+}
+.footer .container {
+  animation-delay: 0.4s;
+}
+.footer ul.list-inline li a {
+  animation-delay: 0.6s;
+}
+.footer .social-footer a {
+  animation-delay: 0.8s;
+}
+.footer p.mb-0 {
+  animation-delay: 1s;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
