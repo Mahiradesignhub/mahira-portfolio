@@ -1,0 +1,129 @@
+// ==========================
+// 🎨 Color Variables
+// ==========================
+$primary-color: #7c3aed;         // Purple
+$primary-light: #c084fc;         // Light Purple
+$primary-dark: #6d28d9;          // Dark Purple
+$accent-color: #9333ea;          // Accent for hover
+$text-color: #1e293b;            // Almost Black (cool dark)
+$text-light: #f9fafb;            // Light text
+$bg-light: #f9f9f9;
+$card-bg: #ffffff;
+$border-radius: 12px;
+
+// ==========================
+// ⚙️ Mixins
+// ==========================
+@mixin transition($time: 0.3s) {
+  transition: all $time ease-in-out;
+}
+
+// ==========================
+// 🏗 Section Container
+// ==========================
+.section-container {
+  padding: 60px 20px;
+  background-color: $bg-light;
+  text-align: center;
+
+  h2.section-title {
+    font-size: 2.5rem;
+    color: $primary-dark;
+    margin-bottom: 10px;
+  }
+
+  .portfolio-intro {
+    font-size: 1rem;
+    color: $text-color;
+    max-width: 700px;
+    margin: 0 auto 40px auto;
+  }
+}
+
+// ==========================
+// 📐 Grid Layout
+// ==========================
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  padding: 0 20px;
+}
+
+// ==========================
+// 🖼 Each Card
+// ==========================
+.image-card {
+  background-color: $card-bg;
+  border-radius: $border-radius;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+  @include transition();
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+  }
+
+  .portfolio-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-bottom: 2px solid $primary-light;
+  }
+
+  video.portfolio-image {
+    max-height: 240px;
+    object-fit: cover;
+  }
+
+  .image-caption {
+    font-size: 1.3rem;
+    color: $primary-dark;
+    font-weight: 600;
+    margin: 16px 0 5px;
+  }
+
+  .image-description {
+    font-size: 0.95rem;
+    color: $text-color;
+    padding: 0 15px 15px;
+  }
+
+  .portfolio-item-link {
+    margin-top: auto;
+    padding-bottom: 20px;
+
+    a {
+      color: $primary-color;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.95rem;
+      display: inline-block;
+      margin-top: 10px;
+      @include transition();
+
+      &:hover {
+        text-decoration: underline;
+        color: $primary-light;
+      }
+    }
+  }
+}
+
+// ==========================
+// 📱 Responsive Tweaks
+// ==========================
+@media (max-width: 600px) {
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .image-caption {
+    font-size: 1.1rem;
+  }
+
+  .image-description {
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Meta Tags for SEO and Responsiveness -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio | Mahira Chaudhry</title>
+  <meta name="description" content="Explore the creative portfolio of Mahira Chaudhry, showcasing animations, campaigns, digital drawings, freelancing projects, graphic design, and more." />
+  <meta name="keywords" content="Mahira Chaudhry, Portfolio, Animation, Campaigns, Digital Drawing, Freelancing, Graphic Design, Illustration" />
+  <meta name="author" content="Mahira Chaudhry" />
+  <meta name="theme-color" content="#123456" />
+  <meta property="og:title" content="Portfolio | Mahira Chaudhry" />
+  <meta property="og:description" content="Creative portfolio of Mahira Chaudhry including animations, campaigns, illustrations, and multimedia projects." />
+  <meta property="og:image" content="https://your-real-domain.com/images/profile.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://your-real-domain.com/portfolio.html" />
+  <link rel="canonical" href="https://your-real-domain.com/portfolio.html" />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" href="assets/favicon.png" type="image/png" />
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/bootstrap.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/portfolio.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <style>
+    /* Portfolio Page Styles */
+    .portfolio-header {
+      text-align: center;
+      margin: 3rem 0 2rem;
+    }
+    .portfolio-header h1 {
+      font-size: 2.75rem;
+      font-weight: 700;
+      color: var(--color-primary-dark);
+    }
+    .portfolio-intro {
+      max-width: 900px;
+      margin: 0 auto 3rem;
+      font-size: 1.125rem;
+      line-height: 1.6;
+      color: var(--color-text-dark, #1f2937);
+      text-align: center;
+    }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto 4rem;
+      padding: 0 1rem;
+    }
+    .portfolio-item {
+      background-color: var(--color-bg-light);
+      border-radius: var(--border-radius, 6px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+    }
+    .portfolio-item:hover,
+    .portfolio-item:focus-within {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+      outline: none;
+    }
+    .portfolio-media {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      background-color: #f0f0f0;
+    }
+    .portfolio-video {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      background-color: #000;
+    }
+    .portfolio-item-content {
+      padding: 1rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .portfolio-item-title {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--color-primary-dark);
+      margin: 0 0 0.5rem 0;
+    }
+    .portfolio-item-description {
+      font-size: 0.95rem;
+      color: var(--color-grey-dark);
+      flex-grow: 1;
+    }
+    .portfolio-item-link {
+      margin-top: 1rem;
+      text-align: right;
+    }
+    .portfolio-item-link a {
+      color: var(--color-primary);
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .portfolio-item-link a:hover,
+    .portfolio-item-link a:focus {
+      color: var(--color-primary-light);
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <nav aria-label="Primary navigation" id="navbar" class="navbar sticky-nav navbar-expand-lg">
+    <div class="container nav-container">
+      <a href="index.html" class="logo" aria-label="Mahira Chaudhry homepage">Mahira Chaudhry</a>
+      <button id="nav-toggle" aria-controls="nav-menu" aria-expanded="false" aria-label="Toggle navigation menu">
+        <span class="fas fa-bars"></span>
+      </button>
+      <ul id="nav-menu" class="nav-menu" role="menubar">
+        <li role="none"><a role="menuitem" href="index.html">Home</a></li>
+        <li role="none"><a role="menuitem" href="about.html">About</a></li>
+        <li role="none" class="has-submenu">
+          <a href="portfolio.html" role="menuitem" aria-current="page" aria-haspopup="true" aria-expanded="false" tabindex="0">
+            Portfolio <i class="fas fa-caret-down"></i>
+          </a>
+          <ul class="submenu" aria-label="Portfolio submenu">
+            <li><a href="portfolio/animation.html">Animation</a></li>
+            <li><a href="portfolio/campaigns.html">Campaigns</a></li>
+            <li><a href="portfolio/copy_writing.html">Copy Writing</a></li>
+            <li><a href="portfolio/digital_drawing.html">Digital Drawing</a></li>
+            <li><a href="portfolio/freelancing.html">Freelancing</a></li>
+            <li><a href="portfolio/graphic_design.html">Graphic Design</a></li>
+            <li><a href="portfolio/illustration.html">Illustration</a></li>
+            <li><a href="portfolio/interactive_design.html">Interactive Design</a></li>
+            <li><a href="portfolio/internship.html">Internship</a></li>
+            <li><a href="portfolio/multimedia.html">Multimedia</a></li>
+            <li><a href="portfolio/poverty_exhibition.html">Poverty Exhibition</a></li>
+            <li><a href="portfolio/thesis.html">Thesis</a></li>
+            <li><a href="portfolio/wedding_design.html">Wedding Design</a></li>
+          </ul>
+        </li>
+        <li role="none"><a role="menuitem" href="experience.html">Experience</a></li>
+        <li role="none"><a role="menuitem" href="skills.html">Skills</a></li>
+        <li role="none"><a role="menuitem" href="contact.html">Contact</a></li>
+        <li role="none"><a role="menuitem" href="service.html">Services</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+
+  <!-- Portfolio Header -->
+  <section class="portfolio-header" aria-label="Mahira Chaudhry Portfolio">
+    <h1>Portfolio</h1>
+    <p class="portfolio-intro">
+      Explore a curated selection of my creative work across animation, campaigns, digital drawing, freelancing projects, graphic design, and illustrations.
+    </p>
+  </section>
+
+  <!-- Portfolio Grid -->
+  <section class="portfolio-grid" aria-label="Portfolio items grid">
+    <!-- Animation -->
+    <article class="portfolio-item" tabindex="0" aria-labelledby="portfolio-animation-title" role="group">
+      <video class="portfolio-video" controls muted preload="metadata" poster="images/animation/shazam transformation.gif" aria-describedby="portfolio-animation-desc">
+        <source src="images/animation/Shezan juice animated ad.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div class="portfolio-item-content">
+        <h2 id="portfolio-animation-title" class="portfolio-item-title">Animation</h2>
+        <p id="portfolio-animation-desc" class="portfolio-item-description">Dynamic animated ads and creative motion graphics showcasing storytelling through visuals.</p>
+        <div class="portfolio-item-link">
+          <a href="Portfolio/Animation.html" aria-label="View full Animation portfolio">View More &rarr;</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Campaigns -->
+    <article class="portfolio-item" tabindex="0" aria-labelledby="portfolio-campaigns-title" role="group">
+      <img src="images/campaigns/kiwi/HOARDING.jpg" alt="Kiwi campaign hoarding" class="portfolio-media" />
+      <div class="portfolio-item-content">
+        <h2 id="portfolio-campaigns-title" class="portfolio-item-title">Campaigns</h2>
+        <p class="portfolio-item-description">Branding and promotional campaigns for diverse clients, including hoardings, flyers, and social media content.</p>
+        <div class="portfolio-item-link">
+          <a href="Portfolio/Campaigns.html" aria-label="View full Campaigns portfolio">View More &rarr;</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Digital Drawing -->
+    <article class="portfolio-item" tabindex="0" aria-labelledby="portfolio-digital-drawing-title" role="group">
+      <img src="images/digital_drawing/art/surrealist art.jpg" alt="Surrealist digital artwork" class="portfolio-media" />
+      <div class="portfolio-item-content">
+        <h2 id="portfolio-digital-drawing-title" class="portfolio-item-title">Digital Drawing</h2>
+        <p class="portfolio-item-description">Abstract and character digital illustrations blending creativity with technical skill.</p>
+        <div class="portfolio-item-link">
+          <a href="Portfolio/Digital_Drawing.html" aria-label="View full Digital Drawing portfolio">View More &rarr;</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Freelancing -->
+    <article class="portfolio-item" tabindex="0" aria-labelledby="portfolio-freelancing-title" role="group">
+      <img src="images/freelancing/insta posts/daapcon.jpg" alt="Freelance Instagram post design" class="portfolio-media" />
+      <div class="portfolio-item-content">
+        <h2 id="portfolio-freelancing-title" class="portfolio-item-title">Freelancing</h2>
+        <p class="portfolio-item-description">Custom logos, social media promos, and branding projects crafted for diverse clients.</p>
+        <div class="portfolio-item-link">
+          <a href="Portfolio/Freelancing.html" aria-label="View full Freelancing portfolio">View More &rarr;</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Graphic Design -->
+    <article class="portfolio-item" tabindex="0" aria-labelledby="portfolio-graphic-design-title" role="group">
+      <img src="images/graphic_design/ad/TRANSIT AD.jpg" alt="Graphic design transit ad" class="portfolio-media" />
+      <div class="portfolio-item-content">
+        <h2 id="portfolio-graphic-design-title" class="portfolio-item-title">Graphic Design</h2>
+        <p class="portfolio-item-description">Creative graphic design for print and digital media including ads, billboards, and infographics.</p>
+        <div class="portfolio-item-link">
+          <a href="Portfolio/Graphic_Design.html" aria-label="View full Graphic Design portfolio">View More &rarr;</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Illustrations -->
+    <article class="portfolio-item" tabindex="0" aria-labelledby="portfolio-illustrations-title" role="group">
+      <img src="images/illustrations/Pizz and Saucy story book/cover.jpg" alt="Illustration from storybook Pizz and Saucy" class="portfolio-media" />
+      <div class="portfolio-item-content">
+        <h2 id="portfolio-illustrations-title" class="portfolio-item-title">Illustrations</h2>
+        <p class="portfolio-item-description">Hand-drawn and digital illustrations for storybooks, poetry, and editorial projects.</p>
+        <div class="portfolio-item-link">
+          <a href="Portfolio/Illustration.html" aria-label="View full Illustrations portfolio">View More &rarr;</a>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- Scroll to Top Button -->
+  <button id="scroll-top" aria-label="Scroll to top" title="Scroll to top" tabindex="0" class="scroll-top-btn" style="display:none;">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+    <!-- Footer -->
+<footer class="footer bg-dark text-light py-4" role="contentinfo">
+  <div class="container d-flex justify-content-between align-items-center flex-wrap">
+    <ul class="list-inline mb-0">
+      <li class="list-inline-item"><a href="about.html">About</a></li>
+      <li class="list-inline-item"><a href="portfolio.html">Portfolio</a></li>
+      <li class="list-inline-item"><a href="contact.html">Contact</a></li>
+      <li class="list-inline-item"><a href="mailto:mahirachaudhry044@gmail.com">Email</a></li>
+    </ul>
+    <p class="mb-0">&copy; 2025 Mahira Chaudhry</p>
+    <div class="social-footer">
+      <a href="https://github.com/Mahiradesignhub" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+      <a href="https://www.instagram.com/mahiradesignhub/" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.behance.net/mahirachaudhry2" aria-label="Behance" target="_blank" rel="noopener noreferrer"><i class="fab fa-behance"></i></a>
+    </div>
+  </div>
+</footer>
+
+
+  <!-- JS -->
+  <script defer src="js/jquery-3.4.1.min.js"></script>
+  <script defer src="js/bootstrap.js"></script>
+  <script defer src="js/circles.min.js"></script>
+  <script defer src="js/custom.js"></script>
+  <script defer src="js/main.js"></script>
+</body>
+</html>
