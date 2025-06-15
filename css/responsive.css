@@ -9,7 +9,7 @@
     font-size: 1.8rem;
     color: var(--color-primary-dark);
     cursor: pointer;
-    z-index: 1001;
+    z-index: 1002;
   }
 
   .nav-menu {
@@ -23,7 +23,7 @@
     padding: 1rem 0;
     border-radius: 0 0 12px 12px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-    z-index: 1000;
+    z-index: 1003; /* Above the overlay */
     animation: slideDown 0.3s ease forwards;
     max-height: 80vh;
     overflow-y: auto;
@@ -70,15 +70,15 @@
     display: none;
     position: absolute;
     top: 0;
-    left: calc(100% - 160px); /* ✅ shift submenu slightly left (20px inside) */
+    left: calc(100% - 160px);
     background-color: rgba(255, 255, 255, 0.95);
     padding: 0.3rem 0.5rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     border-radius: 6px;
     white-space: nowrap;
     min-width: max-content;
-    max-width: 80vw; /* ✅ prevent overflow on narrow screens */
-    overflow-x: auto; /* ✅ allow horizontal scroll if text too long */
+    max-width: 80vw;
+    overflow-x: auto;
   }
 
   .has-submenu.open .submenu {
@@ -103,6 +103,23 @@
     background-color: var(--color-primary);
     color: var(--color-text-light);
   }
+}
+
+/* ============================= */
+/* 🌑 Overlay and Scroll Lock */
+/* ============================= */
+body.menu-open {
+  overflow: hidden;
+  position: relative;
+}
+
+body.menu-open::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1001; /* BELOW the nav-menu (nav-menu z-index: 1003) */
+  pointer-events: all;
 }
 
 /* ============================= */
