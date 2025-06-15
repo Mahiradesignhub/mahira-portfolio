@@ -16,18 +16,20 @@
     display: none;
     flex-direction: column;
     position: absolute;
+    gap: 0;
     top: 100%;
-    left: 0;
-    gap: 0em;
+    left: 200px;
     width: 100%;
     background-color: var(--color-bg-light);
-    padding: 1rem 0;
+    padding: 0rem 0;
     border-radius: 0 0 12px 12px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     z-index: 1003;
     animation: slideDown 0.3s ease forwards;
-    max-height: none;          /* ❗️Removed height constraint */
-    overflow: visible;         /* ❗️No scroll here */
+
+    /* ✅ Make entire nav-menu scrollable when height exceeds viewport */
+    max-height: 80vh;
+    overflow-y: auto;
   }
 
   .nav-menu.nav-menu-active {
@@ -66,39 +68,30 @@
     transform: rotate(90deg);
   }
 
-  /* ✅ Final Submenu → aligned right, scrollable independently */
-.submenu {
-  display: none;
-  position: absolute;
-  top: 50px;
-  left: calc(100% - 160px);
-  background-color: #fff;        /* ✅ Solid white */
-  padding: 0.3rem 0.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border-radius: 6px;
-  white-space: nowrap;
-  min-width: max-content;
-  max-width: 80vw;
-  overflow-y: auto;
-  max-height: 80vh;
-}
+  /* ✅ Submenu scrolls independently inside nav-menu */
+  .has-submenu > .submenu {
+    display: none;
+    position: relative;
+    background-color: #fff;
+    padding: 0.3rem 0;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    max-height: 25vh; /* submenu max-height */
+    overflow-y: auto;
+    z-index: 1002;
+  }
 
-  .has-submenu.open .submenu {
+  .submenu-active {
     display: flex;
     flex-direction: column;
   }
 
-  .submenu li {
-    text-align: left;
-    margin: 0.15rem 0;
-  }
-
   .submenu li a {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.85rem;
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
     color: var(--color-primary-dark);
-    background-color: transparent;
-    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.3s, color 0.3s;
   }
 
   .submenu li a:hover {
@@ -112,15 +105,20 @@
 /* ============================= */
 body.menu-open,
 body.submenu-open {
-  overflow: hidden;       /* ✅ Locks page scrolling */
-  position: relative;
+  position: fixed;        /* ✅ Fix the body in place */
+  width: 100%;
+  overflow-y: hidden;     /* ✅ No scroll for body */
+  top: 0;
+  left: 0;
 }
 
-body.menu-open::after {
+body.menu-open::after,
+body.submenu-open::after {
   content: '';
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.3);
   z-index: 1001;
   pointer-events: all;
 }
