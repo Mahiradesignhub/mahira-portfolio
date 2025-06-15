@@ -67,21 +67,21 @@
   }
 
   /* ✅ Final Submenu → aligned right, scrollable independently */
-  .submenu {
-    display: none;
-    position: absolute;
-    top: 50px;
-    left: calc(100% - 160px);
-    background-color: rgba(255, 255, 255, 0.95);
-    padding: 0.3rem 0.5rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border-radius: 6px;
-    white-space: nowrap;
-    min-width: max-content;
-    max-width: 80vw;
-    overflow-y: auto;          /* ✅ Scroll only inside submenu */
-    max-height: 80vh;          /* ✅ Scroll area height */
-  }
+.submenu {
+  display: none;
+  position: absolute;
+  top: 50px;
+  left: calc(100% - 160px);
+  background-color: #fff;        /* ✅ Solid white */
+  padding: 0.3rem 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  white-space: nowrap;
+  min-width: max-content;
+  max-width: 80vw;
+  overflow-y: auto;
+  max-height: 80vh;
+}
 
   .has-submenu.open .submenu {
     display: flex;
