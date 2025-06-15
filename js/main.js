@@ -11,34 +11,29 @@ document.addEventListener('DOMContentLoaded', () => {
   const isMobile = () => window.innerWidth <= 991;
 
   function openMenu() {
-    navMenu.classList.add('nav-menu-active');
-    navToggle.setAttribute('aria-expanded', 'true');
-    document.body.classList.add('menu-open');
-  }
+  navMenu.classList.add('nav-menu-active');
+  navToggle.setAttribute('aria-expanded', 'true');
+  document.body.classList.add('menu-open'); // ✅ This line locks page scroll
+}
+
 
   function closeMenu() {
     navMenu.classList.remove('nav-menu-active');
     navToggle.setAttribute('aria-expanded', 'false');
-    document.body.classList.remove('menu-open');
+    document.body.classList.remove('menu-open', 'submenu-open'); // ❗ Remove submenu-open also
     closeAllMobileSubmenus();
   }
 
   function closeAllMobileSubmenus() {
     document.querySelectorAll('.submenu-active').forEach(sub => sub.classList.remove('submenu-active'));
     document.querySelectorAll('.has-submenu > a.rotate-arrow').forEach(a => a.classList.remove('rotate-arrow'));
+    document.body.classList.remove('submenu-open'); // ❗ Remove blur if submenu closed
   }
 
-  // ===========================
-  // Toggle Main Menu (Mobile)
-  // ===========================
   navToggle?.addEventListener('click', () => {
-    const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-    expanded ? closeMenu() : openMenu();
+    navToggle.getAttribute('aria-expanded') === 'true' ? closeMenu() : openMenu();
   });
 
-  // ===========================
-  // Toggle Submenus (Mobile)
-  // ===========================
   submenuParents.forEach(link => {
     link.addEventListener('click', e => {
       if (isMobile()) {
@@ -49,37 +44,46 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!isOpen) {
           submenu.classList.add('submenu-active');
           link.classList.add('rotate-arrow');
+          document.body.classList.add('submenu-open'); // ✅ Adds blur
         }
       }
     });
   });
 
-  // ===========================
-  // Outside Click Behavior (Mobile)
-  // ===========================
+  // ✅ Close entire menu after clicking any submenu link
+  submenuParents.forEach(link => {
+    const submenu = link.nextElementSibling;
+    submenu.querySelectorAll('a').forEach(subLink => {
+      subLink.addEventListener('click', () => closeMenu());
+    });
+  });
+
+  // ✅ Outside click handler
   document.addEventListener('click', e => {
     if (isMobile()) {
-      const insideMenu = e.target.closest('#nav-toggle') || e.target.closest('#nav-menu');
-      if (!insideMenu) {
+      const clickedInsideMenuOrSubmenu =
+        e.target.closest('#nav-toggle') ||
+        e.target.closest('#nav-menu') ||
+        e.target.closest('.has-submenu > a') ||
+        e.target.closest('.submenu');
+
+      if (!clickedInsideMenuOrSubmenu) {
         if (document.querySelector('.submenu-active')) {
-          closeAllMobileSubmenus(); // Close submenu first
+          closeAllMobileSubmenus();
         } else {
-          closeMenu(); // Then close entire menu
+          closeMenu();
         }
       }
     }
   });
 
-  // Close when clicking overlay
+  // Also close on click body empty area
   document.body.addEventListener('click', e => {
     if (isMobile() && document.body.classList.contains('menu-open') && e.target === document.body) {
       closeMenu();
     }
   });
 
-  // ===========================
-  // Close Menu on Link Click (Non-submenu)
-  // ===========================
   navMenu?.addEventListener('click', e => {
     const link = e.target.closest('a');
     if (isMobile() && link && !link.parentElement.classList.contains('has-submenu')) {
@@ -87,9 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // ===========================
-  // Desktop Submenu Toggle
-  // ===========================
   const toggleSubmenu = (link, submenu, forceClose = false) => {
     if (!isMobile()) {
       const isOpen = submenu.classList.contains('submenu-active');
@@ -145,9 +146,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ===========================
-  // Save & Load Desktop Submenu State
-  // ===========================
   function saveSubmenuState() {
     if (isMobile()) return;
     const state = {};
@@ -172,24 +170,19 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   loadSubmenuState();
 
-  // ===========================
-  // Desktop: Close on Outside Click or Scroll
-  // ===========================
+  // Close desktop submenu on outside click or scroll
   document.addEventListener('click', e => {
     if (!isMobile() && !e.target.closest('.has-submenu')) {
       submenuParents.forEach(link => toggleSubmenu(link, link.nextElementSibling, true));
     }
   });
-
   window.addEventListener('scroll', () => {
     if (!isMobile()) {
       submenuParents.forEach(link => toggleSubmenu(link, link.nextElementSibling, true));
     }
   });
 
-  // ===========================
-  // Scroll-to-Top Button
-  // ===========================
+  // Scroll to Top button
   if (scrollTopBtn) {
     const toggleScrollTopBtn = () => {
       scrollTopBtn.style.display = window.scrollY > 300 ? 'flex' : 'none';
@@ -204,28 +197,19 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleScrollTopBtn();
   }
 
-  // ===========================
-  // Sticky Navbar
-  // ===========================
   const handleNavbarSticky = () => {
     navbar?.classList.toggle(stickyClass, window.scrollY > scrollThreshold);
   };
   window.addEventListener('scroll', handleNavbarSticky);
   handleNavbarSticky();
 
-  // ===========================
-  // Reset on Resize
-  // ===========================
   window.addEventListener('resize', () => {
     closeAllMobileSubmenus();
     submenuParents.forEach(link => link.setAttribute('aria-expanded', 'false'));
     saveSubmenuState();
-    document.body.classList.remove('menu-open');
+    document.body.classList.remove('menu-open', 'submenu-open');
   });
 
-  // ===========================
-  // Fade-In Sections on Scroll
-  // ===========================
   const sections = document.querySelectorAll('.section-container, .hero-section');
   const fadeInOnScroll = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
@@ -244,9 +228,6 @@ document.addEventListener('DOMContentLoaded', () => {
     fadeInOnScroll.observe(section);
   });
 
-  // ===========================
-  // Accessibility: Focus Styles
-  // ===========================
   document.body.addEventListener('keydown', e => {
     if (e.key === 'Tab') document.body.classList.add('user-is-tabbing');
   });
