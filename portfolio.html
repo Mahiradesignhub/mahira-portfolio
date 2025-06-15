@@ -1,258 +1,381 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Meta Tags for SEO and Responsiveness -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Portfolio | Mahira Chaudhry</title>
-  <meta name="description" content="Explore the creative portfolio of Mahira Chaudhry, showcasing animations, campaigns, digital drawings, freelancing projects, graphic design, and more." />
-  <meta name="keywords" content="Mahira Chaudhry, Portfolio, Animation, Campaigns, Digital Drawing, Freelancing, Graphic Design, Illustration" />
+  <meta name="description" content="Explore the creative portfolio of Mahira Chaudhry, showcasing animations, campaigns, copywriting, digital drawings, freelancing projects, graphic design, and more." />
+  <meta name="keywords" content="Mahira Chaudhry, Portfolio, Animation, Campaigns, Copy Writing, Digital Drawing, Freelancing, Graphic Design, Illustration" />
   <meta name="author" content="Mahira Chaudhry" />
-  <meta name="theme-color" content="#123456" />
-  <meta property="og:title" content="Portfolio | Mahira Chaudhry" />
-  <meta property="og:description" content="Creative portfolio of Mahira Chaudhry including animations, campaigns, illustrations, and multimedia projects." />
-  <meta property="og:image" content="https://your-real-domain.com/images/profile.jpg" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://your-real-domain.com/portfolio.html" />
-  <link rel="canonical" href="https://your-real-domain.com/portfolio.html" />
-  <meta name="robots" content="index, follow" />
   <link rel="icon" href="assets/favicon.png" type="image/png" />
-  <!-- CSS -->
   <link rel="stylesheet" href="css/bootstrap.css" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/portfolio.css" />
   <link rel="stylesheet" href="css/responsive.css" />
-  <!-- Font Awesome -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
-    /* Portfolio Page Styles */
-    .portfolio-header {
-      text-align: center;
-      margin: 3rem 0 2rem;
-    }
-    .portfolio-header h1 {
-      font-size: 2.75rem;
-      font-weight: 700;
-      color: var(--color-primary-dark);
-    }
-    .portfolio-intro {
-      max-width: 900px;
-      margin: 0 auto 3rem;
-      font-size: 1.125rem;
-      line-height: 1.6;
-      color: var(--color-text-dark, #1f2937);
-      text-align: center;
-    }
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      max-width: 1200px;
-      margin: 0 auto 4rem;
+     
+    main {
+      max-width: 1100px;
+      margin: 2rem auto;
       padding: 0 1rem;
     }
-    .portfolio-item {
-      background-color: var(--color-bg-light);
-      border-radius: var(--border-radius, 6px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    h1 {
+      text-align: center;
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+    .intro {
+      text-align: center;
+      color: #64748b;
+      margin-bottom: 3rem;
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Container for pairs of categories */
+    .category-row {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 4rem;
+      flex-wrap: wrap;
+    }
+    /* Each category box */
+    .portfolio-category {
+      flex: 1 1 48%;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgb(124 58 237 / 0.15);
       overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
       display: flex;
       flex-direction: column;
+      min-width: 300px;
     }
-    .portfolio-item:hover,
-    .portfolio-item:focus-within {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-      outline: none;
+    /* Heading style */
+    .portfolio-category h2 {
+      font-size: 2rem;
+      border-bottom: 3px solid #7c3aed;
+      padding: 0.5rem 1.5rem;
+      margin: 0;
+      color: #4c1d95;
+      background: #f3e8ff;
     }
-    .portfolio-media {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      background-color: #f0f0f0;
-    }
-    .portfolio-video {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      background-color: #000;
-    }
-    .portfolio-item-content {
-      padding: 1rem;
+    /* Content inside category */
+    .portfolio-item {
+      padding: 1rem 1.5rem 2rem;
       flex-grow: 1;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: space-between;
     }
-    .portfolio-item-title {
-      font-weight: 700;
-      font-size: 1.25rem;
-      color: var(--color-primary-dark);
-      margin: 0 0 0.5rem 0;
+    .portfolio-item img,
+    .portfolio-item video {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      box-shadow: 0 1px 6px rgb(124 58 237 / 0.1);
     }
-    .portfolio-item-description {
-      font-size: 0.95rem;
-      color: var(--color-grey-dark);
+    .portfolio-description {
+      font-size: 1rem;
+      color: #334155;
+      margin-bottom: 1rem;
       flex-grow: 1;
     }
-    .portfolio-item-link {
-      margin-top: 1rem;
-      text-align: right;
-    }
-    .portfolio-item-link a {
-      color: var(--color-primary);
+    /* View More button */
+    .view-more-btn {
+      align-self: flex-start;
+      background-color: #7c3aed;
+      color: white;
+      padding: 0.5rem 1.2rem;
+      border: none;
+      border-radius: 25px;
       font-weight: 600;
+      font-size: 1rem;
       text-decoration: none;
-      transition: color 0.3s ease;
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
     }
-    .portfolio-item-link a:hover,
-    .portfolio-item-link a:focus {
-      color: var(--color-primary-light);
+    .view-more-btn:hover,
+    .view-more-btn:focus {
+      background-color: #5b21b6;
       outline: none;
+      text-decoration: none;
+      color: white;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 900px) {
+      .category-row {
+        flex-direction: column;
+      }
+      .portfolio-category {
+        flex: 1 1 100%;
+        margin-bottom: 2rem;
+      }
     }
   </style>
 </head>
 <body>
-<header>
+  <header>
   <nav aria-label="Primary navigation" id="navbar" class="navbar sticky-nav navbar-expand-lg">
     <div class="container nav-container">
-      <a href="index.html" class="logo" aria-label="Mahira Chaudhry homepage">Mahira Chaudhry</a>
+      <!-- Logo link goes back one folder -->
+      <a href="../index.html" class="logo" aria-label="Mahira Chaudhry homepage">Mahira Chaudhry</a>
+
       <button id="nav-toggle" aria-controls="nav-menu" aria-expanded="false" aria-label="Toggle navigation menu">
         <span class="fas fa-bars"></span>
       </button>
+
       <ul id="nav-menu" class="nav-menu" role="menubar">
-        <li role="none"><a role="menuitem" href="index.html">Home</a></li>
-        <li role="none"><a role="menuitem" href="about.html">About</a></li>
+        <li role="none"><a role="menuitem" href="../index.html">Home</a></li>
+        <li role="none"><a role="menuitem" href="../about.html">About</a></li>
         <li role="none" class="has-submenu">
-          <a href="portfolio.html" role="menuitem" aria-current="page" aria-haspopup="true" aria-expanded="false" tabindex="0">
+          <a role="menuitem" href="portfolio.html" aria-haspopup="true" aria-expanded="false" tabindex="0">
             Portfolio <i class="fas fa-caret-down"></i>
           </a>
           <ul class="submenu" aria-label="Portfolio submenu">
-            <li><a href="portfolio/animation.html">Animation</a></li>
-            <li><a href="portfolio/campaigns.html">Campaigns</a></li>
-            <li><a href="portfolio/copy_writing.html">Copy Writing</a></li>
-            <li><a href="portfolio/digital_drawing.html">Digital Drawing</a></li>
-            <li><a href="portfolio/freelancing.html">Freelancing</a></li>
-            <li><a href="portfolio/graphic_design.html">Graphic Design</a></li>
-            <li><a href="portfolio/illustration.html">Illustration</a></li>
-            <li><a href="portfolio/interactive_design.html">Interactive Design</a></li>
-            <li><a href="portfolio/internship.html">Internship</a></li>
-            <li><a href="portfolio/multimedia.html">Multimedia</a></li>
-            <li><a href="portfolio/poverty_exhibition.html">Poverty Exhibition</a></li>
-            <li><a href="portfolio/thesis.html">Thesis</a></li>
-            <li><a href="portfolio/wedding_design.html">Wedding Design</a></li>
+            <li><a href="animation.html" aria-current="page">Animation</a></li>
+            <li><a href="campaigns.html">Campaigns</a></li>
+            <li><a href="copy_writing.html">Copy Writing</a></li>
+            <li><a href="digital_drawing.html">Digital Drawing</a></li>
+            <li><a href="freelancing.html">Freelancing</a></li>
+            <li><a href="graphic_design.html">Graphic Design</a></li>
+            <li><a href="illustration.html">Illustration</a></li>
+            <li><a href="interactive_design.html">Interactive Design</a></li>
+            <li><a href="internship.html">Internship</a></li>
+            <li><a href="multimedia.html">Multimedia</a></li>
+            <li><a href="poverty_exhibition.html">Poverty Exhibition</a></li>
+            <li><a href="thesis.html">Thesis</a></li>
+            <li><a href="wedding_design.html">Wedding Design</a></li>
           </ul>
         </li>
-        <li role="none"><a role="menuitem" href="experience.html">Experience</a></li>
-        <li role="none"><a role="menuitem" href="skills.html">Skills</a></li>
-        <li role="none"><a role="menuitem" href="contact.html">Contact</a></li>
-        <li role="none"><a role="menuitem" href="service.html">Services</a></li>
+        <li role="none"><a role="menuitem" href="../experience.html">Experience</a></li>
+        <li role="none"><a role="menuitem" href="../skills.html">Skills</a></li>
+        <li role="none"><a role="menuitem" href="../contact.html">Contact</a></li>
+        <li role="none"><a role="menuitem" href="../service.html">Services</a></li>
       </ul>
     </div>
   </nav>
 </header>
 
-
-  <!-- Portfolio Header -->
-  <section class="portfolio-header" aria-label="Mahira Chaudhry Portfolio">
+  <main>
     <h1>Portfolio</h1>
-    <p class="portfolio-intro">
-      Explore a curated selection of my creative work across animation, campaigns, digital drawing, freelancing projects, graphic design, and illustrations.
+    <p class="intro">
+      Explore a curated collection of my creative work across multiple disciplines including animation, campaigns, copywriting, digital drawing, freelancing, graphic design, illustration, interactive design, internships, multimedia, poverty exhibition, thesis, and wedding design.
     </p>
-  </section>
 
-  <!-- Portfolio Grid -->
-  <section class="portfolio-grid" aria-label="Portfolio items grid">
-    <!-- Animation -->
-    <article class="portfolio-item" tabindex="0" aria-labelledby="portfolio-animation-title" role="group">
-      <video class="portfolio-video" controls muted preload="metadata" poster="images/animation/shazam transformation.gif" aria-describedby="portfolio-animation-desc">
-        <source src="images/animation/Shezan juice animated ad.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-      <div class="portfolio-item-content">
-        <h2 id="portfolio-animation-title" class="portfolio-item-title">Animation</h2>
-        <p id="portfolio-animation-desc" class="portfolio-item-description">Dynamic animated ads and creative motion graphics showcasing storytelling through visuals.</p>
-        <div class="portfolio-item-link">
-          <a href="Portfolio/Animation.html" aria-label="View full Animation portfolio">View More &rarr;</a>
-        </div>
-      </div>
-    </article>
+    <!-- First row: Animation & Campaigns -->
+    <div class="category-row">
+      <section class="portfolio-category" aria-label="Animation Portfolio">
+        <h2>Animation</h2>
+        <article class="portfolio-item">
+          <video controls muted poster="images/animation/shazam transformation.gif" loading="lazy" aria-label="Animation video of Shezan juice animated ad">
+            <source src="images/animation/Shezan juice animated ad.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <p class="portfolio-description">
+            Vibrant motion graphics bringing brands to life through storytelling and dynamic visuals.
+          </p>
+          <a href="portfolio/animation.html" class="view-more-btn" aria-label="View more Animation projects">
+            View More <i class="fas fa-arrow-right"></i>
+          </a>
+        </article>
+      </section>
 
-    <!-- Campaigns -->
-    <article class="portfolio-item" tabindex="0" aria-labelledby="portfolio-campaigns-title" role="group">
-      <img src="images/campaigns/kiwi/HOARDING.jpg" alt="Kiwi campaign hoarding" class="portfolio-media" />
-      <div class="portfolio-item-content">
-        <h2 id="portfolio-campaigns-title" class="portfolio-item-title">Campaigns</h2>
-        <p class="portfolio-item-description">Branding and promotional campaigns for diverse clients, including hoardings, flyers, and social media content.</p>
-        <div class="portfolio-item-link">
-          <a href="Portfolio/Campaigns.html" aria-label="View full Campaigns portfolio">View More &rarr;</a>
-        </div>
-      </div>
-    </article>
+      <section class="portfolio-category" aria-label="Campaigns Portfolio">
+        <h2>Campaigns</h2>
+        <article class="portfolio-item">
+          <img src="images/campaigns/kiwi/HOARDING.jpg" alt="Kiwi campaign hoarding" loading="lazy" />
+          <p class="portfolio-description">
+            Strategic branding campaigns including hoardings, flyers, posters, and social media creatives.
+          </p>
+          <a href="portfolio/campaigns.html" class="view-more-btn" aria-label="View more Campaigns projects">
+            View More <i class="fas fa-arrow-right"></i>
+          </a>
+        </article>
+      </section>
+    </div>
 
-    <!-- Digital Drawing -->
-    <article class="portfolio-item" tabindex="0" aria-labelledby="portfolio-digital-drawing-title" role="group">
-      <img src="images/digital_drawing/art/surrealist art.jpg" alt="Surrealist digital artwork" class="portfolio-media" />
-      <div class="portfolio-item-content">
-        <h2 id="portfolio-digital-drawing-title" class="portfolio-item-title">Digital Drawing</h2>
-        <p class="portfolio-item-description">Abstract and character digital illustrations blending creativity with technical skill.</p>
-        <div class="portfolio-item-link">
-          <a href="Portfolio/Digital_Drawing.html" aria-label="View full Digital Drawing portfolio">View More &rarr;</a>
-        </div>
-      </div>
-    </article>
+    <!-- Second row: Copy Writing & Digital Drawing -->
+    <div class="category-row">
+      <section class="portfolio-category" aria-label="Copy Writing Portfolio">
+        <h2>Copy Writing</h2>
+        <article class="portfolio-item">
+          <img src="images/copy_writing/shan masala ads/shan masala ads.jpg" alt="Copywriting sample for Shan Masala" loading="lazy" />
+          <p class="portfolio-description">
+            Compelling copy that communicates brand stories and drives audience engagement.
+          </p>
+          <a href="portfolio/copy_writing.html" class="view-more-btn" aria-label="View more Copy Writing projects">
+            View More <i class="fas fa-arrow-right"></i>
+          </a>
+        </article>
+      </section>
 
-    <!-- Freelancing -->
-    <article class="portfolio-item" tabindex="0" aria-labelledby="portfolio-freelancing-title" role="group">
-      <img src="images/freelancing/insta posts/daapcon.jpg" alt="Freelance Instagram post design" class="portfolio-media" />
-      <div class="portfolio-item-content">
-        <h2 id="portfolio-freelancing-title" class="portfolio-item-title">Freelancing</h2>
-        <p class="portfolio-item-description">Custom logos, social media promos, and branding projects crafted for diverse clients.</p>
-        <div class="portfolio-item-link">
-          <a href="Portfolio/Freelancing.html" aria-label="View full Freelancing portfolio">View More &rarr;</a>
-        </div>
-      </div>
-    </article>
+      <section class="portfolio-category" aria-label="Digital Drawing Portfolio">
+        <h2>Digital Drawing</h2>
+        <article class="portfolio-item">
+          <img src="images/digital_drawing/art/surrealist art.jpg" alt="Surrealist digital artwork" loading="lazy" />
+          <p class="portfolio-description">
+            Original digital illustrations blending abstract and character art styles.
+          </p>
+          <a href="portfolio/digital_drawing.html" class="view-more-btn" aria-label="View more Digital Drawing projects">
+            View More <i class="fas fa-arrow-right"></i>
+          </a>
+        </article>
+      </section>
+    </div>
 
-    <!-- Graphic Design -->
-    <article class="portfolio-item" tabindex="0" aria-labelledby="portfolio-graphic-design-title" role="group">
-      <img src="images/graphic_design/ad/TRANSIT AD.jpg" alt="Graphic design transit ad" class="portfolio-media" />
-      <div class="portfolio-item-content">
-        <h2 id="portfolio-graphic-design-title" class="portfolio-item-title">Graphic Design</h2>
-        <p class="portfolio-item-description">Creative graphic design for print and digital media including ads, billboards, and infographics.</p>
-        <div class="portfolio-item-link">
-          <a href="Portfolio/Graphic_Design.html" aria-label="View full Graphic Design portfolio">View More &rarr;</a>
-        </div>
-      </div>
-    </article>
+    <!-- Third row: Freelancing & Graphic Design -->
+    <div class="category-row">
+      <section class="portfolio-category" aria-label="Freelancing Portfolio">
+        <h2>Freelancing</h2>
+        <article class="portfolio-item">
+          <img src="images/freelancing/comic/1.jpg" alt="Freelance logo design" loading="lazy" />
+          <p class="portfolio-description">
+            Custom logos and branding solutions tailored to client needs.
+          </p>
+          <a href="portfolio/freelancing.html" class="view-more-btn" aria-label="View more Freelancing projects">
+            View More <i class="fas fa-arrow-right"></i>
+          </a>
+        </article>
+      </section>
 
-    <!-- Illustrations -->
-    <article class="portfolio-item" tabindex="0" aria-labelledby="portfolio-illustrations-title" role="group">
-      <img src="images/illustrations/Pizz and Saucy story book/cover.jpg" alt="Illustration from storybook Pizz and Saucy" class="portfolio-media" />
-      <div class="portfolio-item-content">
-        <h2 id="portfolio-illustrations-title" class="portfolio-item-title">Illustrations</h2>
-        <p class="portfolio-item-description">Hand-drawn and digital illustrations for storybooks, poetry, and editorial projects.</p>
-        <div class="portfolio-item-link">
-          <a href="Portfolio/Illustration.html" aria-label="View full Illustrations portfolio">View More &rarr;</a>
-        </div>
-      </div>
-    </article>
-  </section>
+      <section class="portfolio-category" aria-label="Graphic Design Portfolio">
+        <h2>Graphic Design</h2>
+        <article class="portfolio-item">
+          <img src="images/graphic_design/billboards/creative execution nescafe (1).jpg" alt="Transit ad graphic design" loading="lazy" />
+          <p class="portfolio-description">
+            Eye-catching print and digital designs for diverse marketing platforms.
+          </p>
+          <a href="portfolio/graphic_design.html" class="view-more-btn" aria-label="View more Graphic Design projects">
+            View More <i class="fas fa-arrow-right"></i>
+          </a>
+        </article>
+      </section>
+    </div>
 
-  <!-- Scroll to Top Button -->
-  <button id="scroll-top" aria-label="Scroll to top" title="Scroll to top" tabindex="0" class="scroll-top-btn" style="display:none;">
-    <i class="fas fa-arrow-up"></i>
-  </button>
+    <!-- Fourth row: Illustrations & Interactive Design -->
+    <div class="category-row">
+      <section class="portfolio-category" aria-label="Illustrations Portfolio">
+        <h2>Illustrations</h2>
+        <article class="portfolio-item">
+          <img src="images/illustrations/poem.jpg" alt="Storybook illustration" loading="lazy" />
+          <p class="portfolio-description">
+            Handcrafted illustrations for editorial and narrative projects.
+          </p>
+          <a href="portfolio/illustration.html" class="view-more-btn" aria-label="View more Illustrations projects">
+            View More <i class="fas fa-arrow-right"></i>
+          </a>
+        </article>
+      </section>
 
-    <!-- Footer -->
+      <section class="portfolio-category" aria-label="Interactive Design Portfolio">
+        <h2>Interactive Design</h2>
+        <article class="portfolio-item">
+          <img src="images/interactive_design/kafeo/0002.jpg" alt="Interactive design sample" loading="lazy" />
+          <p class="portfolio-description">
+            User-centric UI/UX designs for engaging web and mobile experiences.
+          </p>
+          <a href="portfolio/interactive_design.html" class="view-more-btn" aria-label="View more Interactive Design projects">
+            View More <i class="fas fa-arrow-right"></i>
+          </a>
+        </article>
+      </section>
+    </div>
+
+    <!-- Fifth row: Internship & Multimedia -->
+    <div class="category-row">
+      <section class="portfolio-category" aria-label="Internship Portfolio">
+        <h2>Internship</h2>
+        <article class="portfolio-item">
+          <img src="images/internship/conferences flex/10 by 20 flex.jpg" alt="Internship project snapshot" loading="lazy" />
+          <p class="portfolio-description">
+            Professional projects showcasing real-world design and communication skills.
+          </p>
+          <a href="portfolio/internship.html" class="view-more-btn" aria-label="View more Internship projects">
+            View More <i class="fas fa-arrow-right"></i>
+          </a>
+        </article>
+      </section>
+
+      <section class="portfolio-category" aria-label="Multimedia Portfolio">
+        <h2>Multimedia</h2>
+        <article class="portfolio-item">
+          <video controls muted poster="images/multimedia/lcwu horror teaser.mp4" loading="lazy" aria-label="Multimedia video teaser">
+            <source src="images/multimedia/lcwu horror teaser.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <p class="portfolio-description">
+            Creative multimedia projects combining video, audio, and animation.
+          </p>
+          <a href="portfolio/multimedia.html" class="view-more-btn" aria-label="View more Multimedia projects">
+            View More <i class="fas fa-arrow-right"></i>
+          </a>
+        </article>
+      </section>
+    </div>
+
+    <!-- Sixth row: Poverty Exhibition & Thesis -->
+    <div class="category-row">
+      <section class="portfolio-category" aria-label="Poverty Exhibition Portfolio">
+        <h2>Poverty Exhibition</h2>
+        <article class="portfolio-item">
+          <img src="images/poverty_solution_exhibition/IMG_20240216_142357.jpg" alt="Poverty exhibition concept" loading="lazy" />
+          <p class="portfolio-description">
+            Conceptual exhibition designs addressing social issues with impactful visuals.
+          </p>
+          <a href="portfolio/poverty_exhibition.html" class="view-more-btn" aria-label="View more Poverty Exhibition projects">
+            View More <i class="fas fa-arrow-right"></i>
+          </a>
+        </article>
+      </section>
+
+      <section class="portfolio-category" aria-label="Thesis Portfolio">
+        <h2>Thesis</h2>
+        <article class="portfolio-item">
+          <img src="images/thesis/Shaitaan Ka Lahore/83072382-76dc-4526-9da6-9a817a024ca4-19.jpg" alt="Thesis overview" loading="lazy" />
+          <p class="portfolio-description">
+            This thesis represents an in-depth, research-driven exploration of innovative design methodologies aimed at solving real-world problems through creative solutions. By combining theoretical frameworks with practical application, the project investigates how visual communication, branding, and interactive design can influence audience perception and engagement. The research process involved extensive analysis, user testing, and iterative design development to ensure functionality and aesthetic relevance. Focused on bridging the gap between concept and execution, this thesis highlights the role of design thinking in addressing contemporary challenges within the creative industry, offering fresh perspectives grounded in both academic rigor and professional practice.
+          </p>
+          <a href="portfolio/thesis.html" class="view-more-btn" aria-label="View more Thesis projects">
+            View More <i class="fas fa-arrow-right"></i>
+          </a>
+        </article>
+      </section>
+    </div>
+
+    <!-- Seventh row: Wedding Design only -->
+    <div class="category-row">
+      <section class="portfolio-category" aria-label="Wedding Design Portfolio" style="flex: 1 1 100%;">
+        <h2>Wedding Design</h2>
+        <article class="portfolio-item">
+          <img src="images/wedding_design/indian_wedding_album_2/12.jpg" alt="Wedding invitation design" loading="lazy" />
+          <p class="portfolio-description">
+            Elegant wedding branding and invitation designs with cultural motifs.
+          </p>
+          <a href="portfolio/wedding_design.html" class="view-more-btn" aria-label="View more Wedding Design projects">
+            View More <i class="fas fa-arrow-right"></i>
+          </a>
+        </article>
+      </section>
+    </div>
+  </main>
+
+
+<!-- Scroll to Top Button -->
+<button id="scroll-top" aria-label="Scroll to top" title="Scroll to top" tabindex="0" class="scroll-top-btn" style="display:none;">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- Footer -->
 <footer class="footer bg-dark text-light py-4" role="contentinfo">
   <div class="container d-flex justify-content-between align-items-center flex-wrap">
     <ul class="list-inline mb-0">
@@ -270,12 +393,41 @@
   </div>
 </footer>
 
+<!-- JS -->
+<script defer src="js/jquery-3.4.1.min.js"></script>
+<script defer src="js/bootstrap.js"></script>
+<script defer src="js/circles.min.js"></script>
+<script defer src="js/custom.js"></script>
+<script defer src="js/main.js"></script>
+<script>
+  // Mobile nav toggle
+  document.addEventListener('DOMContentLoaded', function() {
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    navToggle.addEventListener('click', function() {
+      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', !expanded);
+      navMenu.classList.toggle('open');
+    });
 
-  <!-- JS -->
-  <script defer src="js/jquery-3.4.1.min.js"></script>
-  <script defer src="js/bootstrap.js"></script>
-  <script defer src="js/circles.min.js"></script>
-  <script defer src="js/custom.js"></script>
-  <script defer src="js/main.js"></script>
+    // Scroll to top button
+    const scrollBtn = document.getElementById('scroll-top');
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 300) {
+        scrollBtn.style.display = 'flex';
+      } else {
+        scrollBtn.style.display = 'none';
+      }
+    });
+    scrollBtn.addEventListener('click', function() {
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+    scrollBtn.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        window.scrollTo({top: 0, behavior: 'smooth'});
+      }
+    });
+  });
+</script>
 </body>
 </html>
