@@ -1,5 +1,5 @@
 /* ============================= */
-/* 📱 Mobile Navigation (Upgraded) */
+/* 📱 Mobile Navigation (Updated & Fixed Scroll) */
 /* ============================= */
 @media (max-width: 991px) {
   #nav-toggle {
@@ -18,15 +18,16 @@
     position: absolute;
     top: 100%;
     left: 0;
+    gap: 0em;
     width: 100%;
     background-color: var(--color-bg-light);
     padding: 1rem 0;
     border-radius: 0 0 12px 12px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-    z-index: 1003; /* Above the overlay */
+    z-index: 1003;
     animation: slideDown 0.3s ease forwards;
-    max-height: 80vh;
-    overflow-y: auto;
+    max-height: none;          /* ❗️Removed height constraint */
+    overflow: visible;         /* ❗️No scroll here */
   }
 
   .nav-menu.nav-menu-active {
@@ -65,11 +66,11 @@
     transform: rotate(90deg);
   }
 
-  /* ✅ Final Submenu → aligned right, slightly inset, responsive to screen size */
+  /* ✅ Final Submenu → aligned right, scrollable independently */
   .submenu {
     display: none;
     position: absolute;
-    top: 0;
+    top: 50px;
     left: calc(100% - 160px);
     background-color: rgba(255, 255, 255, 0.95);
     padding: 0.3rem 0.5rem;
@@ -78,7 +79,8 @@
     white-space: nowrap;
     min-width: max-content;
     max-width: 80vw;
-    overflow-x: auto;
+    overflow-y: auto;          /* ✅ Scroll only inside submenu */
+    max-height: 80vh;          /* ✅ Scroll area height */
   }
 
   .has-submenu.open .submenu {
@@ -108,8 +110,9 @@
 /* ============================= */
 /* 🌑 Overlay and Scroll Lock */
 /* ============================= */
-body.menu-open {
-  overflow: hidden;
+body.menu-open,
+body.submenu-open {
+  overflow: hidden;       /* ✅ Locks page scrolling */
   position: relative;
 }
 
@@ -118,7 +121,7 @@ body.menu-open::after {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 1001; /* BELOW the nav-menu (nav-menu z-index: 1003) */
+  z-index: 1001;
   pointer-events: all;
 }
 
