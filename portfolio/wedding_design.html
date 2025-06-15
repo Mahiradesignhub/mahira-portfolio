@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wedding Design Portfolio | Mahira Chaudhry</title>
+  <meta name="description" content="Explore Mahira Chaudhry's wedding design portfolio including invitations, albums, and creative displays." />
+  <meta name="author" content="Mahira Chaudhry" />
+  <meta name="keywords" content="Wedding Design, Invitations, Albums, Mahira Chaudhry, Portfolio" />
+  <link rel="icon" href="../assets/favicon.png" type="image/png" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../css/bootstrap.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/portfolio.css" />
+  <link rel="stylesheet" href="../css/responsive.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
+
+  <!-- Google Fonts Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+
+<style>
+  html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: #f9fafb;
+  margin: 2rem;
+  color: #1f2937;
+}
+
+h2 {
+  color: #1e3a8a;
+  border-bottom: 3px solid #3b82f6;
+  padding-bottom: 0.25rem;
+  margin-bottom: 1rem;
+  user-select: none;
+}
+
+.gallery-section {
+  max-width: 1200px;
+  margin: 0 auto 3rem;
+}
+
+.slider-wrapper {
+  display: flex;
+  height: 70vh;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  overflow: hidden;
+  position: relative;
+  max-height: 80vh;
+}
+
+.thumbnails {
+  width: 120px;
+  background: #f0f4ff;
+  border-right: 1px solid #e5e7eb;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  overflow-y: auto;
+}
+
+.thumbnails::-webkit-scrollbar {
+  width: 6px;
+}
+.thumbnails::-webkit-scrollbar-thumb {
+  background-color: #1e3a8a;
+  border-radius: 6px;
+}
+
+.thumbnail {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 3px solid transparent;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+}
+
+.thumbnail.active {
+  border-color: #1e40af;
+  box-shadow: 0 0 8px rgba(30, 58, 138, 0.7);
+}
+
+.thumbnail:hover,
+.thumbnail:focus {
+  border-color: #2563eb;
+  outline: none;
+  box-shadow: 0 0 6px rgba(37, 99, 235, 0.8);
+}
+
+.thumbnail:focus-visible {
+  outline: 2px dashed #3b82f6;
+  outline-offset: 2px;
+}
+
+.preview {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 12px 12px 0;
+  background: #fff;
+  overflow: hidden;
+}
+
+.preview img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 12px;
+  user-select: none;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  background: #e5e7eb;
+  object-fit: contain;
+}
+
+.nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(30, 58, 138, 0.7);
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 50%;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.3s ease, transform 0.2s ease;
+  z-index: 10;
+}
+
+.nav-button:hover,
+.nav-button:focus {
+  background: #1e40af;
+  outline: none;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.nav-prev {
+  left: 1rem;
+}
+
+.nav-next {
+  right: 1rem;
+}
+
+/* Lightbox / Zoom View */
+.image-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.9);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  cursor: zoom-out;
+}
+
+.image-overlay img {
+  max-width: 90%;
+  max-height: 90%;
+  user-select: none;
+  cursor: zoom-in;
+  transition: transform 0.3s ease;
+}
+
+.image-overlay.active {
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  body {
+    margin: 1rem;
+  }
+
+  .slider-wrapper {
+    flex-direction: column;
+    height: auto;
+    max-height: none;
+  }
+
+  .thumbnails {
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    border-right: none;
+    border-bottom: 1px solid #e5e7eb;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.5rem 0;
+    gap: 0.5rem;
+  }
+
+  .thumbnail {
+    width: auto;
+    height: 80px;
+    flex-shrink: 0;
+    border-radius: 6px;
+  }
+
+  .preview {
+    border-radius: 0 0 12px 12px;
+    margin-top: 0.5rem;
+    max-height: 70vh;
+  }
+
+  .nav-prev,
+  .nav-next {
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+    padding: 0.4rem 0.8rem;
+    font-size: 1.8rem;
+  }
+
+  .nav-prev {
+    left: 0.5rem;
+  }
+
+  .nav-next {
+    right: 0.5rem;
+  }
+}
+</style>
+
+</head>
+
+<body>
+  <header>
+  <nav aria-label="Primary navigation" id="navbar" class="navbar sticky-nav navbar-expand-lg">
+    <div class="container nav-container">
+      <!-- Logo link goes back one folder -->
+      <a href="../index.html" class="logo" aria-label="Mahira Chaudhry homepage">Mahira Chaudhry</a>
+
+      <button id="nav-toggle" aria-controls="nav-menu" aria-expanded="false" aria-label="Toggle navigation menu">
+        <span class="fas fa-bars"></span>
+      </button>
+
+      <ul id="nav-menu" class="nav-menu" role="menubar">
+        <li role="none"><a role="menuitem" href="../index.html">Home</a></li>
+        <li role="none"><a role="menuitem" href="../about.html">About</a></li>
+        <li role="none" class="has-submenu">
+          <a role="menuitem" href="../portfolio.html" aria-haspopup="true" aria-expanded="false" tabindex="0">
+            Portfolio <i class="fas fa-caret-down"></i>
+          </a>
+          <ul class="submenu" aria-label="Portfolio submenu">
+            <li><a href="animation.html">Animation</a></li>
+            <li><a href="campaigns.html">Campaigns</a></li>
+            <li><a href="copy_writing.html">Copy Writing</a></li>
+            <li><a href="digital_drawing.html">Digital Drawing</a></li>
+            <li><a href="freelancing.html">Freelancing</a></li>
+            <li><a href="graphic_design.html">Graphic Design</a></li>
+            <li><a href="illustration.html">Illustration</a></li>
+            <li><a href="interactive_design.html">Interactive Design</a></li>
+            <li><a href="internship.html">Internship</a></li>
+            <li><a href="multimedia.html">Multimedia</a></li>
+            <li><a href="poverty_exhibition.html">Poverty Exhibition</a></li>
+            <li><a href="thesis.html">Thesis</a></li>
+            <li><a href="wedding_design.html" aria-current="page">Wedding Design</a></li>
+          </ul>
+        </li>
+        <li role="none"><a role="menuitem" href="../experience.html">Experience</a></li>
+        <li role="none"><a role="menuitem" href="../skills.html">Skills</a></li>
+        <li role="none"><a role="menuitem" href="../contact.html">Contact</a></li>
+        <li role="none"><a role="menuitem" href="../service.html">Services</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+
+
+  <!-- Main content -->
+  <main class="main-content container" tabindex="-1">
+
+    <!-- Buddhism Themed Invitation Gallery -->
+    <section aria-label="Buddhism Themed Invitation">
+      <h2 class="section-title">Buddhism Themed Invitation</h2>
+      <div class="image-grid">
+        <div class="image-card" tabindex="0">
+          <img src="../images/wedding_design/buddhism themed  invitation/buddhism lotus flower.jpg" alt="Buddhism Lotus Flower" loading="lazy" />
+          <div class="image-caption">Buddhism Lotus Flower</div>
+          <div class="image-description">Beautiful lotus flower design for Buddhism themed invitation.</div>
+        </div>
+        <div class="image-card" tabindex="0">
+          <img src="../images/wedding_design/buddhism themed  invitation/CARD INSIDE.jpg" alt="Card Inside" loading="lazy" />
+          <div class="image-caption">Card Inside</div>
+          <div class="image-description">Inside view of the Buddhism themed invitation card.</div>
+        </div>
+        <div class="image-card" tabindex="0">
+          <img src="../images/wedding_design/buddhism themed  invitation/CARD OUTSIDE.jpg" alt="Card Outside" loading="lazy" />
+          <div class="image-caption">Card Outside</div>
+          <div class="image-description">Outside view of the Buddhism themed invitation card.</div>
+        </div>
+        <div class="image-card" tabindex="0">
+          <img src="../images/wedding_design/buddhism themed  invitation/pop up card.jpg" alt="Pop Up Card" loading="lazy" />
+          <div class="image-caption">Pop Up Card</div>
+          <div class="image-description">Creative pop-up card design for wedding invitations.</div>
+        </div>
+        <div class="image-card" tabindex="0">
+          <img src="../images/wedding_design/buddhism themed  invitation/wedding gift wrapper 1.jpg" alt="Wedding Gift Wrapper 1" loading="lazy" />
+          <div class="image-caption">Wedding Gift Wrapper 1</div>
+          <div class="image-description">Design of wedding gift wrapper - style 1.</div>
+        </div>
+        <div class="image-card" tabindex="0">
+          <img src="../images/wedding_design/buddhism themed  invitation/wedding gift wrapper 2.jpg" alt="Wedding Gift Wrapper 2" loading="lazy" />
+          <div class="image-caption">Wedding Gift Wrapper 2</div>
+          <div class="image-description">Design of wedding gift wrapper - style 2.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Invitations Gallery -->
+    <section aria-label="Wedding Invitations">
+      <h2 class="section-title">Wedding Invitations</h2>
+      <div class="image-grid">
+        <div class="image-card" tabindex="0">
+          <img src="../images/wedding_design/invitations/barat invitation.jpg" alt="Barat Invitation" loading="lazy" />
+          <div class="image-caption">Barat Invitation</div>
+          <div class="image-description">Elegant Barat invitation design.</div>
+        </div>
+        <div class="image-card" tabindex="0">
+          <img src="../images/wedding_design/invitations/Barat.jpg" alt="Barat" loading="lazy" />
+          <div class="image-caption">Barat</div>
+          <div class="image-description">Traditional Barat card design.</div>
+        </div>
+        <div class="image-card" tabindex="0">
+          <img src="../images/wedding_design/invitations/mehendi.jpg" alt="Mehendi" loading="lazy" />
+          <div class="image-caption">Mehendi</div>
+          <div class="image-description">Colorful Mehendi invitation card.</div>
+        </div>
+        <div class="image-card" tabindex="0">
+          <img src="../images/wedding_design/invitations/nikkah.jpg" alt="Nikkah" loading="lazy" />
+          <div class="image-caption">Nikkah</div>
+          <div class="image-description">Elegant Nikkah invitation design.</div>
+        </div>
+        <div class="image-card" tabindex="0">
+          <img src="../images/wedding_design/invitations/Ubtan.jpg" alt="Ubtan" loading="lazy" />
+          <div class="image-caption">Ubtan</div>
+          <div class="image-description">Ubtan ceremony invitation card.</div>
+        </div>
+        <div class="image-card" tabindex="0">
+          <img src="../images/wedding_design/invitations/walima invitation.jpg" alt="Walima Invitation" loading="lazy" />
+          <div class="image-caption">Walima Invitation</div>
+          <div class="image-description">Walima invitation card design.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Studio Template -->
+    <section aria-label="Studio Template">
+      <h2 class="section-title">Studio Template</h2>
+      <div class="image-grid">
+        <div class="image-card" tabindex="0">
+          <img src="../images/wedding_design/Studio Pemplate.jpg" alt="Studio Template" loading="lazy" />
+          <div class="image-caption">Studio Template</div>
+          <div class="image-description">Professional studio template design.</div>
+        </div>
+      </div>
+    </section>
+
+
+     <!-- Indian wedding albums -->
+<section class="gallery-section" aria-label="Indian Wedding Album 1">
+  <h2>Indian Wedding Album 1</h2>
+  <div class="slider-wrapper" id="album1-slider">
+    <nav class="thumbnails" role="list" aria-label="Thumbnail navigation for Indian Wedding Album 1"></nav>
+    <section class="preview" aria-live="polite" aria-atomic="true" tabindex="0">
+      <button class="nav-button nav-prev" aria-label="Previous image"><i class="fas fa-chevron-left"></i></button>
+      <img src="" alt="Selected Indian Wedding Album 1 image" class="large-image" />
+      <button class="nav-button nav-next" aria-label="Next image"><i class="fas fa-chevron-right"></i></button>
+    </section>
+  </div>
+
+  <!-- PDF Preview link -->
+  <div style="margin-top: 1.5rem; text-align: center;">
+    <a href="https://drive.google.com/file/d/1qE3PstzmkmaUSa_uFyKY5FmytKhY8LPp/view?usp=sharing"
+       target="_blank"
+       rel="noopener noreferrer"
+       style="display: inline-block; padding: 0.6rem 1.2rem; background-color: #1e3a8a; color: #fff; text-decoration: none; border-radius: 6px; font-weight: 600; transition: background-color 0.3s ease;">
+      View Full Album PDF Preview
+    </a>
+  </div>
+</section>
+
+
+   <section class="gallery-section" aria-label="Indian Wedding Album 2">
+  <h2>Indian Wedding Album 2</h2>
+  <div class="slider-wrapper" id="album2-slider">
+    <nav class="thumbnails" role="list" aria-label="Thumbnail navigation for Indian Wedding Album 2"></nav>
+    <section class="preview" aria-live="polite" aria-atomic="true" tabindex="0">
+      <button class="nav-button nav-prev" aria-label="Previous image"><i class="fas fa-chevron-left"></i></button>
+      <img src="" alt="Selected Indian Wedding Album 2 image" class="large-image" />
+      <button class="nav-button nav-next" aria-label="Next image"><i class="fas fa-chevron-right"></i></button>
+    </section>
+  </div>
+
+  <!-- PDF Preview link for Album 2 -->
+  <div style="margin-top: 1.5rem; text-align: center;">
+    <a href="https://drive.google.com/file/d/1koyaggwagecUzg51QTmZTErEMLs17awn/view?usp=sharing"
+       target="_blank"
+       rel="noopener noreferrer"
+       style="display: inline-block; padding: 0.6rem 1.2rem; background-color: #1e3a8a; color: #fff; text-decoration: none; border-radius: 6px; font-weight: 600; transition: background-color 0.3s ease;">
+      View Full Album PDF Preview
+    </a>
+  </div>
+</section>
+
+
+  </main>
+
+  <!-- Scroll to top button -->
+  <button id="scroll-top" aria-label="Scroll to top" title="Scroll to top" tabindex="0" class="scroll-top-btn" style="display:none;">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+ <!-- Footer -->
+<footer class="footer bg-dark text-light py-4" role="contentinfo">
+  <div class="container d-flex justify-content-between align-items-center flex-wrap">
+    <ul class="list-inline mb-0">
+      <li class="list-inline-item"><a href="../about.html">About</a></li>
+      <li class="list-inline-item"><a href="../portfolio.html">Portfolio</a></li>
+      <li class="list-inline-item"><a href="../contact.html">Contact</a></li>
+      <li class="list-inline-item"><a href="mailto:mahirachaudhry044@gmail.com">Email</a></li>
+    </ul>
+    <p class="mb-0">&copy; 2025 Mahira Chaudhry</p>
+    <div class="social-footer">
+      <a href="https://github.com/Mahiradesignhub" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+      <a href="https://www.instagram.com/mahiradesignhub/" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.behance.net/mahirachaudhry2" aria-label="Behance" target="_blank" rel="noopener noreferrer"><i class="fab fa-behance"></i></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const generateImagePaths = (folder, maxIndex) =>
+    Array.from({ length: maxIndex + 1 }, (_, i) => `../images/wedding_design/${folder}/${i}.jpg`);
+
+  const album1Images = generateImagePaths('indian_wedding_album_1', 29);
+  const album2Images = generateImagePaths('indian_wedding_album_2', 29);
+
+  const createSlider = (sliderId, images, autoSlideInterval = 2000) => {
+    const slider = document.getElementById(sliderId);
+    if (!slider) return console.warn(`Slider with ID "${sliderId}" not found.`);
+
+    const thumbnails = slider.querySelector('.thumbnails');
+    const previewImg = slider.querySelector('.preview img.large-image');
+    const prevBtn = slider.querySelector('.nav-prev');
+    const nextBtn = slider.querySelector('.nav-next');
+
+    let currentIndex = 0;
+    let autoSlideTimer;
+
+    thumbnails.innerHTML = '';
+
+    images.forEach((src, idx) => {
+      const thumb = document.createElement('img');
+      thumb.src = src;
+      thumb.alt = `Thumbnail ${idx + 1} of ${images.length}`;
+      thumb.classList.add('thumbnail');
+      thumb.tabIndex = 0;
+      thumb.setAttribute('role', 'button');
+      thumb.setAttribute('aria-label', `View image ${idx + 1}`);
+
+      thumb.addEventListener('click', () => {
+        selectImage(idx);
+        resetAutoSlide();
+      });
+      thumb.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          selectImage(idx);
+          resetAutoSlide();
+        }
+      });
+
+      thumbnails.appendChild(thumb);
+    });
+
+    const selectImage = idx => {
+      currentIndex = idx;
+      previewImg.style.opacity = 0;
+      setTimeout(() => {
+        previewImg.src = images[currentIndex];
+        previewImg.alt = `Image ${currentIndex + 1} of ${images.length}`;
+        previewImg.style.opacity = 1;
+        updateActiveThumbnail();
+      }, 150);
+    };
+
+    const updateActiveThumbnail = () => {
+      thumbnails.querySelectorAll('.thumbnail').forEach((thumb, idx) => {
+        thumb.classList.toggle('active', idx === currentIndex);
+      });
+    };
+
+    const showPrev = () => {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      selectImage(currentIndex);
+    };
+
+    const showNext = () => {
+      currentIndex = (currentIndex + 1) % images.length;
+      selectImage(currentIndex);
+    };
+
+    prevBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      showPrev();
+      resetAutoSlide();
+    });
+    nextBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      showNext();
+      resetAutoSlide();
+    });
+
+    // Keyboard navigation
+    slider.querySelector('.preview').addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        showPrev();
+        resetAutoSlide();
+      }
+      if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        showNext();
+        resetAutoSlide();
+      }
+    });
+
+    // Auto slide functionality
+    const startAutoSlide = () => {
+      autoSlideTimer = setInterval(showNext, autoSlideInterval);
+    };
+
+    const stopAutoSlide = () => {
+      clearInterval(autoSlideTimer);
+    };
+
+    const resetAutoSlide = () => {
+      stopAutoSlide();
+      startAutoSlide();
+    };
+
+    // Pause auto slide on hover or focus
+    slider.addEventListener('mouseenter', stopAutoSlide);
+    slider.addEventListener('mouseleave', startAutoSlide);
+    slider.addEventListener('focusin', stopAutoSlide);
+    slider.addEventListener('focusout', startAutoSlide);
+
+    // Initialize slider
+    selectImage(currentIndex);
+    startAutoSlide();
+  };
+
+  createSlider('album1-slider', album1Images);
+  createSlider('album2-slider', album2Images);
+</script>
+
+
+
+  <!-- JS -->
+  <script src="../js/jquery-3.4.1.min.js"></script>
+  <script src="../js/bootstrap.js"></script>
+  <script src="../js/circles.min.js"></script>
+  <script src="../js/custom.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/portfolio.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
