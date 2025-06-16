@@ -70,6 +70,32 @@ img {
   display: block;
   border-radius: 50%;
 }
+h1, h2, h3 {
+  font-family: 'Roboto', sans-serif;
+  /* color: var(--color-text-dark); */
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0.5em;
+}
+
+h1 {
+  
+      text-align: center;
+      font-size: 3rem;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  /* color: var(--color-primary-dark); Deep purple headline */
+}
+
+h2 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  /* color: var(--color-primary); */
+}
+
+h3 {
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  /* color: var(--color-grey-dark); */
+}
+
 
 /* ============================= */
 /* Container */
@@ -351,9 +377,9 @@ button:focus,
 /* General Section Styling  */
 /* ======================== */
 .section-container {
-  padding: 5rem 1.5rem;
+  padding: 2rem 1.5rem;
   max-width: var(--max-width);
-  margin: 0 auto;
+  margin: 25px auto;
   background: linear-gradient(to right, #f8fafc, #ffffff);
   border-radius: var(--border-radius);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
