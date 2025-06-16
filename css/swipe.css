@@ -3,7 +3,7 @@
 =========================== */
 .swiper {
   width: 100%;
-  height: 80vh;
+  height: auto;
   position: relative;
   background: transparent;
   opacity: 0;
@@ -25,109 +25,70 @@
 =========================== */
 .swiper-slide {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  position: relative;
-  padding: 2rem;
+  justify-content: start;
+  text-align: center;
+  padding: 1.5rem;
   overflow: hidden;
   border-radius: var(--border-radius);
-  min-height: 320px;
   background: transparent;
-  text-align: center;
-  user-select: none;
 }
 
-.swiper-slide video,
-.swiper-slide img,
-.swiper-slide iframe {
+.portfolio-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+}
+
+.portfolio-heading {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  background-image: var(--color-primary-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.media-wrapper {
   width: 100%;
-  max-height: 80%;
+  max-width: 720px;
   aspect-ratio: 16 / 9;
-  object-fit: contain;
-  border-radius: calc(var(--border-radius) / 1.6);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  border-radius: calc(var(--border-radius) / 1.2);
+  overflow: hidden;
   background: #18181b;
+  margin-bottom: 0.8rem;
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.3);
+}
+
+.portfolio-video,
+.media-wrapper img,
+.media-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
   display: block;
-  margin: 0 auto;
-  transition: opacity 0.4s ease;
+}
+
+/* ===========================
+   Caption Styles
+=========================== */
+.caption {
+  font-size: 1.2rem;
+  color: #334155;
+  margin-top: 0.5rem;
+  font-weight: 500;
 }
 
 /* ===========================
    Hover Overlay (Desktop Only)
 =========================== */
-.swiper-slide .caption-overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 2rem;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  background: rgba(0, 0, 0, 0);
-  z-index: 10;
-}
-
-.swiper-slide:hover video,
-.swiper-slide:hover img,
-.swiper-slide:hover iframe {
-  opacity: 0.1;
-}
-
-.swiper-slide:hover .caption-overlay {
-  opacity: 1;
-}
-
-.caption-overlay .portfolio-heading {
-  font-size: 3.8rem;
-  font-weight: 800;
-  margin-bottom: 0.8rem;
-  background-image: var(--color-primary-gradient);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.caption-overlay .caption {
-  font-size: 1.8rem;
-  font-weight: 500;
-  color: #1902c8;
-  margin-top: 0.5rem;
-}
-
-/* ===========================
-   Watch Full Video Button
-=========================== */
-.watch-full-video {
-  margin-top: 1rem;
-  position: relative;
-  display: inline-block;
-  background-image: var(--color-primary-gradient);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 600;
-  font-size: 1.1rem;
-  transition: opacity 0.3s ease, color 0.3s ease;
-}
-
-.watch-full-video::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  width: 100%;
-  height: 2px;
-  background: var(--color-primary-gradient);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s ease;
-}
-
-.watch-full-video:hover::after {
-  transform: scaleX(1);
+@media (hover: hover) {
+  .swiper-slide:hover .media-wrapper {
+    opacity: 0.8;
+  }
 }
 
 /* ===========================
@@ -136,12 +97,11 @@
 .swiper-button-next,
 .swiper-button-prev {
   color: #fff;
-  width: 48px;
-  height: 48px;
+  width: 42px;
+  height: 42px;
   background: rgba(0, 0, 0, 0.6);
   border-radius: 50%;
   backdrop-filter: blur(4px);
-  position: absolute;
   top: 50%;
   transform: translateY(-50%);
   z-index: 20;
@@ -154,14 +114,9 @@
   transform: translateY(-50%) scale(1.1);
 }
 
-.swiper-button-next:active,
-.swiper-button-prev:active {
-  transform: translateY(-50%); /* ✅ FIXED: No scaling to prevent button disappearing */
-}
-
 .swiper-button-next::after,
 .swiper-button-prev::after {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
 }
 
@@ -169,7 +124,7 @@
    Swiper Pagination Dots
 =========================== */
 .swiper-pagination {
-  bottom: 15px !important;
+  bottom: 10px !important;
 }
 
 .swiper-pagination-bullet {
@@ -187,80 +142,30 @@
    Responsive for Mobile
 =========================== */
 @media (max-width: 768px) {
-  .swiper {
-    height: auto;
-  }
-
   .swiper-slide {
-    flex-direction: column;
-    padding: 1rem;
+    padding: 1rem 0.5rem;
   }
 
-  .swiper-slide:hover video,
-  .swiper-slide:hover img,
-  .swiper-slide:hover iframe {
-    opacity: 1;
-  }
-
-  .swiper-slide:hover .caption-overlay {
-    opacity: 1;
-  }
-
-  .caption-overlay {
-    position: static;
-    opacity: 1;
-    padding: 0;
-    background: transparent;
-  }
-
-  .caption-overlay .portfolio-heading {
-    font-size: 1.6rem;
-    font-weight: 800;
-    margin-bottom: 0.5rem;
-    color: #1e293b;
+  .portfolio-heading {
+    font-size: 1.4rem;
+    margin-bottom: 0.6rem;
     background-image: none;
     -webkit-text-fill-color: initial;
+    color: var(--color-primary);
   }
 
-  .swiper-slide video,
-  .swiper-slide img,
-  .swiper-slide iframe {
-    margin: 0.5rem auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background: #000;
-  }
-
-  .caption-overlay .caption {
+  .caption {
     font-size: 1rem;
     color: #64748b;
-    margin-top: 0.4rem;
   }
 
-  .watch-full-video {
-    font-size: 1rem;
-    margin-top: 0.6rem;
-  }
-
+  /* ✅ Remove navigation buttons on mobile */
   .swiper-button-next,
   .swiper-button-prev {
-    position: absolute;
-    bottom: 15px;
-    top: auto;
-    transform: none;
-    width: 42px;
-    height: 42px;
-    background: rgba(0, 0, 0, 0.5);
-  }
-
-  .swiper-button-prev {
-    left: calc(50% - 55px);
-  }
-
-  .swiper-button-next {
-    right: calc(50% - 55px);
+    display: none !important;
   }
 
   .swiper-pagination {
-    bottom: 60px !important;
+    bottom: 0px !important;
   }
 }
