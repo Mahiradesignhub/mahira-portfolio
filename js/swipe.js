@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const swiper = new Swiper('.mySwiper', {
+  const swiper = new Swiper('.portfolioSwiper', {
     loop: true,
     slidesPerView: 1,
     spaceBetween: 0,
@@ -8,19 +8,19 @@ document.addEventListener('DOMContentLoaded', () => {
     autoplay: {
       delay: 2500,
       disableOnInteraction: false,
-      pauseOnMouseEnter: true
+      pauseOnMouseEnter: true,
     },
     keyboard: {
       enabled: true,
-      onlyInViewport: true
+      onlyInViewport: true,
     },
     navigation: {
       nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev'
+      prevEl: '.swiper-button-prev',
     },
     pagination: {
       el: '.swiper-pagination',
-      clickable: true
+      clickable: true,
     },
     on: {
       init() {
@@ -57,6 +57,8 @@ document.addEventListener('DOMContentLoaded', () => {
       video.play().catch(() => {});
     }
 
-    if (caption) caption.classList.add('show');
+    if (caption) {
+      caption.classList.add('show');
+    }
   }
 });
