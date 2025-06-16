@@ -2,11 +2,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const swiper = new Swiper('.portfolioSwiper', {
     loop: true,
     slidesPerView: 1,
-    spaceBetween: 0,
-    speed: 800,
     centeredSlides: true,
+    speed: 900,
     autoplay: {
-      delay: 2500,
+      delay: 3000,
       disableOnInteraction: false,
       pauseOnMouseEnter: true,
     },
@@ -24,18 +23,43 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     on: {
       init() {
-        playActiveSlideMedia(this);
+        initializeSlides();
+        animateActiveSlide(this);
       },
       slideChangeTransitionStart() {
-        resetAllSlideMedia(this);
+        resetAllSlideVideos(this);
       },
       slideChangeTransitionEnd() {
-        playActiveSlideMedia(this);
+        animateActiveSlide(this);
       }
     }
   });
 
-  function resetAllSlideMedia(swiperInstance) {
+  function initializeSlides() {
+    document.querySelectorAll('.swiper-slide').forEach(slide => {
+      if (!slide.querySelector('.media-wrapper')) {
+        const media = slide.querySelector('img, video, iframe');
+        if (media) {
+          const mediaWrapper = document.createElement('div');
+          mediaWrapper.classList.add('media-wrapper');
+
+          const overlay = document.createElement('div');
+          overlay.classList.add('overlay-content');
+
+          const heading = slide.querySelector('.portfolio-heading');
+          const caption = slide.querySelector('.caption');
+          if (heading) overlay.appendChild(heading);
+          if (caption) overlay.appendChild(caption);
+
+          mediaWrapper.appendChild(media);
+          mediaWrapper.appendChild(overlay);
+          slide.insertBefore(mediaWrapper, slide.firstChild);
+        }
+      }
+    });
+  }
+
+  function resetAllSlideVideos(swiperInstance) {
     swiperInstance.slides.forEach(slide => {
       const video = slide.querySelector('video');
       if (video) {
@@ -43,22 +67,27 @@ document.addEventListener('DOMContentLoaded', () => {
         video.currentTime = 0;
       }
     });
-    document.querySelectorAll('.caption').forEach(caption => caption.classList.remove('show'));
   }
 
-  function playActiveSlideMedia(swiperInstance) {
+  function animateActiveSlide(swiperInstance) {
     const activeSlide = swiperInstance.slides[swiperInstance.activeIndex];
-    const video = activeSlide.querySelector('video');
-    const caption = activeSlide.querySelector('.caption');
+    const media = activeSlide.querySelector('img, video, iframe');
 
+    if (media) {
+      media.style.animation = 'none'; // Reset animation
+      void media.offsetWidth;         // Trigger reflow
+      media.style.animation = 'zoomInBoom 0.8s ease forwards'; // Restart animation
+    }
+
+    const video = activeSlide.querySelector('video');
     if (video) {
       video.currentTime = 0;
       video.muted = true;
-      video.play().catch(() => {});
-    }
-
-    if (caption) {
-      caption.classList.add('show');
+      video.play().catch(() => {}); // Avoids unhandled promise rejections
     }
   }
+
+  window.addEventListener('resize', () => {
+    animateActiveSlide(swiper);
+  });
 });
