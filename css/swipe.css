@@ -1,11 +1,10 @@
 /* ===========================
-   Swiper Global Styles
+    Swiper Global Styles
 =========================== */
 .swiper {
   width: 100%;
   height: auto;
   position: relative;
-  background: transparent;
   opacity: 0;
   animation: fadeIn 0.8s forwards;
   --color-primary: #7c3aed;
@@ -21,13 +20,12 @@
 }
 
 /* ===========================
-   Slide Styles
+    Slide Styles
 =========================== */
 .swiper-slide {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: start;
   text-align: center;
   padding: 1.5rem;
   overflow: hidden;
@@ -35,76 +33,110 @@
   background: transparent;
 }
 
-.portfolio-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-decoration: none;
+.media-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #18181b;
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.3);
 }
 
-.portfolio-heading {
-  font-size: 2rem;
-  font-weight: 800;
-  margin-bottom: 1rem;
+.media-wrapper img,
+.media-wrapper video,
+.media-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 0 !important;
+  transition: filter 0.5s ease, transform 0.5s ease;
+}
+
+/* ===========================
+    Overlay Text - Always Visible
+=========================== */
+.overlay-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  /* PERFECT vertical centering */
+  align-items: center;      /* PERFECT horizontal centering */
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(4px);
+  text-align: center;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.overlay-content .portfolio-heading {
+  font-size: 2.2rem;
+  font-weight: 900;
+  margin-bottom: 0.6rem;
+  line-height: 1.2;
   background-image: var(--color-primary-gradient);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  color: transparent;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.4s ease, transform 0.4s ease, scale 0.4s ease;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
-.media-wrapper {
-  width: 100%;
-  max-width: 720px;
-  aspect-ratio: 16 / 9;
-  border-radius: calc(var(--border-radius) / 1.2);
-  overflow: hidden;
-  background: #18181b;
-  margin-bottom: 0.8rem;
-  box-shadow: 0 0 18px rgba(0, 0, 0, 0.3);
-}
-
-.portfolio-video,
-.media-wrapper img,
-.media-wrapper iframe {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-}
-
-/* ===========================
-   Caption Styles
-=========================== */
-.caption {
-  font-size: 1.2rem;
-  color: #334155;
-  margin-top: 0.5rem;
+.overlay-content .caption {
+  font-size: 1.15rem;
+  color: #f8fafc;
   font-weight: 500;
+  line-height: 1.5;
+  max-width: 90%;
+  opacity: 0.92;
+  transform: translateY(0);
+  transition: opacity 0.4s ease, transform 0.4s ease, scale 0.4s ease;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 /* ===========================
-   Hover Overlay (Desktop Only)
+    Hover Effects (Desktop Only)
 =========================== */
 @media (hover: hover) {
-  .swiper-slide:hover .media-wrapper {
-    opacity: 0.8;
+  .swiper-slide:hover .media-wrapper img,
+  .swiper-slide:hover .media-wrapper video,
+  .swiper-slide:hover .media-wrapper iframe {
+    /* filter: blur(5px) brightness(0.8); */
+    transform: scale(1.05);
+  }
+
+  .swiper-slide:hover .overlay-content .portfolio-heading {
+    transform: translateY(-10px) scale(1.08);
+    opacity: 1;
+  }
+
+  .swiper-slide:hover .overlay-content .caption {
+    transform: translateY(-6px) scale(1.05);
+    opacity: 1;
   }
 }
 
 /* ===========================
-   Swiper Navigation Buttons
+    Swiper Navigation Buttons
 =========================== */
 .swiper-button-next,
 .swiper-button-prev {
   color: #fff;
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   background: rgba(0, 0, 0, 0.6);
   border-radius: 50%;
-  backdrop-filter: blur(4px);
+  /* backdrop-filter: blur(4px); */
+  position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 20;
+  z-index: 10;
   transition: background 0.3s ease, transform 0.3s ease;
 }
 
@@ -121,10 +153,10 @@
 }
 
 /* ===========================
-   Swiper Pagination Dots
+    Swiper Pagination Dots
 =========================== */
 .swiper-pagination {
-  bottom: 10px !important;
+  bottom: 12px !important;
 }
 
 .swiper-pagination-bullet {
@@ -139,33 +171,32 @@
 }
 
 /* ===========================
-   Responsive for Mobile
+    Responsive for Mobile
 =========================== */
 @media (max-width: 768px) {
   .swiper-slide {
     padding: 1rem 0.5rem;
   }
 
-  .portfolio-heading {
-    font-size: 1.4rem;
-    margin-bottom: 0.6rem;
-    background-image: none;
-    -webkit-text-fill-color: initial;
-    color: var(--color-primary);
+  .overlay-content {
+    background: rgba(0, 0, 0, 0.4);
+    /* backdrop-filter: blur(2px); */
   }
 
-  .caption {
+  .overlay-content .portfolio-heading {
+    font-size: 1.5rem;
+  }
+
+  .overlay-content .caption {
     font-size: 1rem;
-    color: #64748b;
   }
 
-  /* ✅ Remove navigation buttons on mobile */
   .swiper-button-next,
   .swiper-button-prev {
     display: none !important;
   }
 
   .swiper-pagination {
-    bottom: 0px !important;
+    bottom: 0 !important;
   }
 }
