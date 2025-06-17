@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Services | Mahira Chaudhry</title>
+  <meta name="description" content="Discover the creative services offered by Mahira Chaudhry including graphic design, branding, animation, and more." />
+  <meta name="author" content="Mahira Chaudhry" />
+  <meta name="keywords" content="Services, Graphic Design, Branding, Animation, Illustration, Freelancing" />
+  <link rel="icon" href="assets/favicon.png" type="image/png" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/index_content.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/portfolio.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <style>
+    /* ============================= */
+/* Page Header & Subtitle */
+/* ============================= */
+.page-header {
+  text-align: center;
+  margin: 4rem 0 2rem;
+  color: var(--color-primary-dark);
+  font-weight: 900;
+  font-size: 3rem;
+  letter-spacing: 2px;
+  user-select: none;
+}
+
+.page-subtitle {
+  max-width: 700px;
+  margin: 0 auto 3rem;
+  font-size: 1.2rem;
+  color: var(--color-grey-medium);
+  font-weight: 500;
+  text-align: center;
+}
+
+/* ============================= */
+/* Services Grid Layout */
+/* ============================= */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: var(--max-width);
+  margin: 0 auto 5rem;
+  padding: 0 1rem;
+}
+
+/* ============================= */
+/* Service Card */
+/* ============================= */
+.service-card {
+  background: var(--color-bg-light);
+  border-radius: var(--border-radius);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+  cursor: default;
+  user-select: none;
+}
+
+.service-card:hover,
+.service-card:focus-within {
+  transform: translateY(-8px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+  outline: none;
+}
+
+/* ============================= */
+/* Service Card Content */
+/* ============================= */
+.service-icon {
+  font-size: 3.5rem;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.service-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  margin-bottom: 0.75rem;
+}
+
+.service-description {
+  font-size: 1rem;
+  color: var(--color-grey-dark);
+  line-height: 1.6;
+}
+
+/* ============================= */
+/* Responsive Adjustments */
+/* ============================= */
+@media (max-width: 600px) {
+  .page-header {
+    font-size: 2.25rem;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+  </style>
+</head>
+<body>
+<!-- Navigation -->
+  <header>
+    <nav aria-label="Primary navigation" id="navbar" class="navbar sticky-nav navbar-expand-lg">
+      <div class="container nav-container">
+        <a href="index.html" class="logo" aria-label="Mahira Chaudhry homepage">Mahira Chaudhry</a>
+        <button id="nav-toggle" aria-controls="nav-menu" aria-expanded="false" aria-label="Toggle navigation menu">
+          <span class="fas fa-bars"></span>
+        </button>
+        <ul id="nav-menu" class="nav-menu" role="menubar">
+          <li role="none"><a role="menuitem" href="index.html">Home</a></li>
+          <li role="none"><a role="menuitem" href="about.html" aria-current="page">About</a></li>
+          <li role="none" class="has-submenu">
+            <a role="menuitem" href="portfolio.html" aria-haspopup="true" aria-expanded="false" tabindex="0">Portfolio <i class="fas fa-caret-down"></i></a>
+            <ul class="submenu" aria-label="Portfolio submenu">
+              <li><a href="portfolio/animation.html">Animation</a></li>
+              <li><a href="portfolio/campaigns.html">Campaigns</a></li>
+              <li><a href="portfolio/copy_writing.html">Copy Writing</a></li>
+              <li><a href="portfolio/digital_drawing.html">Digital Drawing</a></li>
+              <li><a href="portfolio/freelancing.html">Freelancing</a></li>
+              <li><a href="portfolio/graphic_design.html">Graphic Design</a></li>
+              <li><a href="portfolio/illustration.html">Illustration</a></li>
+              <li><a href="portfolio/interactive_design.html">Interactive Design</a></li>
+              <li><a href="portfolio/internship.html">Internship</a></li>
+              <li><a href="portfolio/multimedia.html">Multimedia</a></li>
+              <li><a href="portfolio/poverty_exhibition.html">Poverty Exhibition</a></li>
+              <li><a href="portfolio/thesis.html">Thesis</a></li>
+              <li><a href="portfolio/wedding_design.html">Wedding Design</a></li>
+            </ul>
+          </li>
+          <li role="none"><a role="menuitem" href="experience.html">Experience</a></li>
+          <li role="none"><a role="menuitem" href="skills.html">Skills</a></li>
+          <li role="none"><a role="menuitem" href="contact.html">Contact</a></li>
+          <li role="none"><a role="menuitem" href="service.html">Services</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Services Header -->
+<section class="section-header" id="services-header" aria-label="Services by Mahira Chaudhry">
+  <h1>My Services</h1>
+  <p class="subtitle">Creative Solutions Tailored For You</p>
+</section>
+
+
+
+  <main class="main-content container" tabindex="-1">
+    <h1 class="section">My Creative Services</h1>
+    <p class="page-subtitle">Offering a range of professional creative services to bring your ideas to life. Explore how I can help you with branding, graphic design, animation, and more.</p>
+
+<section class="services-grid" aria-label="Creative Services Offered">
+  
+  <!-- Social Media Handling -->
+  <article class="service-card highlight-service" tabindex="0">
+    <i class="fas fa-share-alt service-icon" aria-hidden="true"></i>
+    <h2 class="service-title">Social Media Handling</h2>
+    <p class="service-description">Complete visual content creation for social media — including post design, reels, stories, thumbnails, scheduling, and brand aesthetics across Instagram, Facebook, and YouTube.</p>
+  </article>
+
+  <!-- Branding & Campaigns -->
+  <article class="service-card" tabindex="0">
+    <i class="fas fa-bullhorn service-icon" aria-hidden="true"></i>
+    <h2 class="service-title">Branding & Campaigns</h2>
+    <p class="service-description">High-impact product branding, ad campaigns, hoardings, and visual identity design that sets your brand apart — across print, web, and motion platforms.</p>
+  </article>
+
+  <!-- Animation & Motion -->
+  <article class="service-card" tabindex="0">
+    <i class="fas fa-photo-video service-icon" aria-hidden="true"></i>
+    <h2 class="service-title">Animation & Motion Graphics</h2>
+    <p class="service-description">Creative animated videos, explainer reels, GIFs, and transformations — designed to captivate across YouTube, social media, and advertising spaces.</p>
+  </article>
+
+  <!-- Illustration & Concept Art -->
+  <article class="service-card" tabindex="0">
+    <i class="fas fa-pencil-ruler service-icon" aria-hidden="true"></i>
+    <h2 class="service-title">Illustration & Concept Art</h2>
+    <p class="service-description">Custom illustrations, concept boards, and character art — for books, products, or brand storytelling. Available in digital ink, color, and sketch styles.</p>
+  </article>
+
+  <!-- Digital Drawing & Surreal Art -->
+  <article class="service-card" tabindex="0">
+    <i class="fas fa-brush service-icon" aria-hidden="true"></i>
+    <h2 class="service-title">Surreal & Digital Art</h2>
+    <p class="service-description">Visually striking surreal art, portraits, and abstract compositions — crafted digitally for exhibitions, prints, or personal use.</p>
+  </article>
+
+  <!-- Comic Design -->
+  <article class="service-card" tabindex="0">
+    <i class="fas fa-book-open service-icon" aria-hidden="true"></i>
+    <h2 class="service-title">Comic & Story Design</h2>
+    <p class="service-description">From single-frame comics to multi-page story arcs — designed with character expression, visual flow, and emotional engagement.</p>
+  </article>
+
+  <!-- Merchandise & T-Shirt Design -->
+  <article class="service-card" tabindex="0">
+    <i class="fas fa-tshirt service-icon" aria-hidden="true"></i>
+    <h2 class="service-title">T-Shirt & Merchandise Design</h2>
+    <p class="service-description">Bold and market-ready artwork for apparel, mugs, phone covers, and more. Perfect for influencers, stores, and product lines.</p>
+  </article>
+
+  <!-- YouTube Thumbnails -->
+  <article class="service-card" tabindex="0">
+    <i class="fas fa-th-large service-icon" aria-hidden="true"></i>
+    <h2 class="service-title">YouTube Thumbnails</h2>
+    <p class="service-description">Scroll-stopping thumbnails that drive clicks — tailored to your video niche, audience behavior, and branding style.</p>
+  </article>
+
+  <!-- Reels & Short Video Design -->
+  <article class="service-card" tabindex="0">
+    <i class="fas fa-play-circle service-icon" aria-hidden="true"></i>
+    <h2 class="service-title">Reels & Short Form Design</h2>
+    <p class="service-description">Dynamic visuals and covers for Instagram Reels, Shorts, and TikTok. Enhance viewer retention and brand recall effortlessly.</p>
+  </article>
+
+  <!-- Book & Cover Design -->
+  <article class="service-card" tabindex="0">
+    <i class="fas fa-book service-icon" aria-hidden="true"></i>
+    <h2 class="service-title">Book & Cover Design</h2>
+    <p class="service-description">Cover art and internal design for books, eBooks, storybooks, and guides — formatted for Kindle, paperback, or PDF publishing.</p>
+  </article>
+
+  <!-- Freelance Work & Custom Projects -->
+  <article class="service-card" tabindex="0">
+    <i class="fas fa-user-edit service-icon" aria-hidden="true"></i>
+    <h2 class="service-title">Freelance & Custom Projects</h2>
+    <p class="service-description">Unique client collaborations including app guides, event invites, wedding cards, and specialized commissions — tailored to your vision.</p>
+  </article>
+</section>
+
+  </main>
+
+  <button id="scroll-top" aria-label="Scroll to top" title="Scroll to top" tabindex="0" class="scroll-top-btn" style="display:none;">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Footer -->
+<footer class="footer bg-dark text-light py-4" role="contentinfo">
+  <div class="container d-flex justify-content-between align-items-center flex-wrap">
+    <ul class="list-inline mb-0">
+      <li class="list-inline-item"><a href="about.html">About</a></li>
+      <li class="list-inline-item"><a href="portfolio.html">Portfolio</a></li>
+      <li class="list-inline-item"><a href="contact.html">Contact</a></li>
+      <li class="list-inline-item"><a href="mailto:mahirachaudhry044@gmail.com">Email</a></li>
+    </ul>
+    <p class="mb-0">&copy; 2025 Mahira Chaudhry</p>
+    <div class="social-footer">
+      <a href="https://github.com/Mahiradesignhub" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+      <a href="https://www.instagram.com/mahiradesignhub/" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.behance.net/mahirachaudhry2" aria-label="Behance" target="_blank" rel="noopener noreferrer"><i class="fab fa-behance"></i></a>
+    </div>
+  </div>
+</footer>
+
+  <!-- JS -->
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="js/circles.min.js"></script>
+  <script src="js/custom.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/portfolio.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,233 @@
+/* ============================= */
+/* Section Headers (All Pages) */
+/* ============================= */
+/* ================================
+/* 📌 Section Header with Image Background - Optimized Height */
+.section-header {
+  background: url('../images/hero-background.jpg') center center / cover no-repeat, linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+  color: var(--color-text-light);
+  padding: 1.0rem 0.8rem;  /* reduced height */
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 4px solid var(--color-primary-dark);
+  box-shadow: inset 0 -2px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Dark overlay for contrast */
+.section-header::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0,0,0,0.65), rgba(0,0,0,0.4));
+  z-index: 0;
+}
+
+.section-header * {
+  position: relative;
+  z-index: 1;
+}
+
+.section-header h1 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);  /* slightly smaller for visual balance */
+  margin-bottom: 0.4rem;
+  font-weight: 800;
+  text-shadow: 0 3px 8px rgba(0,0,0,0.3);
+  color: var(--color-bg-light);
+}
+
+.section-header .subtitle {
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-weight: 400;
+  opacity: 0.9;
+  color: rgba(255,255,255,0.85);
+  text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* 📱 Responsive - Optimized for Mobile */
+@media (max-width: 768px) {
+  .section-header {
+    padding: 1.8rem 1rem;
+  }
+
+  .section-header h1 {
+    font-size: 1.75rem;
+  }
+
+  .section-header .subtitle {
+    font-size: 1rem;
+  }
+}
+
+/* ============================= */
+/* Section Content (All Pages) */
+/* ============================= */
+.section-content {
+  padding: 2rem 1.5rem;
+}
+
+.section-content p {
+  margin-bottom: 1rem;
+  color: var(--color-grey-dark);
+}
+
+.section-title, h2.section-title {
+  text-align: center;
+  color: #1e3a8a;
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+  border-bottom: 3px solid #3b82f6;
+  padding-bottom: 0.7rem;
+  letter-spacing: 0.5px;
+  user-select: none;
+}
+
+
+/* ============================= */
+/* Lists and Layout */
+/* ============================= */
+ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+ul li {
+  margin-bottom: 0.5rem;
+  color: var(--color-grey-medium);
+}
+
+.section-content strong {
+  color: var(--color-primary);
+}
+
+/* ============================= */
+/* Experience List Styling */
+/* ============================= */
+.experience-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.experience-list li {
+  position: relative;
+  background-color: var(--color-grey-light);
+  border-left: 4px solid var(--color-primary-light);
+  border-radius: var(--border-radius);
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.25rem;
+  transition: background-color var(--transition-speed), color var(--transition-speed), transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.experience-list li:hover {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+  color: var(--color-text-light);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.experience-list h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  transition: color var(--transition-speed);
+}
+
+.experience-list li:hover h3 {
+  color: var(--color-text-light);
+}
+
+.experience-list .date {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-grey-medium);
+  transition: color var(--transition-speed);
+}
+
+.experience-list li:hover .date {
+  color: var(--color-text-light);
+}
+
+/* ============================= */
+/* Skills Section - Updated Modern Style */
+/* ============================= */
+.skills-section {
+  margin-bottom: 3rem;
+}
+
+.skills-section h2 {
+  font-size: 2rem;
+  color: var(--color-primary-dark);
+  margin-bottom: 1.5rem;
+  border-left: 4px solid var(--color-primary);
+  padding-left: 0.75rem;
+  font-weight: 700;
+  user-select: none;
+}
+
+.skills-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.skills-list li {
+  background-color: var(--color-grey-light);
+  color: var(--color-primary-dark);
+  padding: 1rem 1.25rem;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: transform var(--transition-speed), background-color var(--transition-speed), color var(--transition-speed), box-shadow var(--transition-speed);
+  cursor: pointer;
+}
+
+.skills-list li:hover {
+  background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+  color: var(--color-text-light);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* ============================= */
+/* Responsive Adjustments */
+/* ============================= */
+@media (max-width: 768px) {
+  .skills-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .skills-list {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .skills-list li {
+    padding: 0.85rem 1rem;
+  }
+}
+
+/* ============================= */
+/* Responsive Design */
+/* ============================= */
+@media (max-width: 768px) {
+  .section-header h1 {
+    font-size: 2rem;
+  }
+
+  .section-header .subtitle {
+    font-size: 1rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+}

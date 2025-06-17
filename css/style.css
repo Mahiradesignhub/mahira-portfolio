@@ -1,0 +1,911 @@
+/* ============================= */
+/* Import Google Fonts - Roboto */
+/* ============================= */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+/* ============================= */
+/* CSS Variables - Theme-friendly Color Palette */
+/* ============================= */
+:root {
+  --font-family-base: 'Roboto', sans-serif;
+
+  /* Color Palette */
+  --color-primary: #7c3aed;        /* Primary Purple */
+  --color-primary-light: #c084fc;  /* Light Purple */
+  --color-primary-dark: #6d28d9;   /* Dark Purple */
+
+  --color-text-dark: #1e293b;      /* Text Dark Blue-Gray */
+  --color-grey-medium: #64748b;    /* Medium Gray */
+  --color-grey-light: #cbd5e1;     /* Light Gray */
+
+  /* Additional Colors */
+  --color-bg-light: #ffffff;       /* Light Background */
+  --color-text-light: #f1f5f9;     /* Light Text for Dark BG */
+  --color-grey-dark: #334155;      /* Dark Gray */
+
+  /* Layout & Effects */
+  --transition-speed: 0.3s;
+  --border-radius: 12px;
+  --max-width: 1200px;
+}
+
+/* ============================= */
+/* Global Reset & Base Styles */
+/* ============================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  line-height: 1.6;
+  background-color: var(--color-bg-light);
+  color: var(--color-text-dark);
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+/* ============================= */
+/* Links */
+/* ============================= */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-speed);
+}
+
+a:hover,
+a:focus {
+  color: var(--color-primary-light);
+  outline: none;
+}
+
+/* ============================= */
+/* Images */
+/* ============================= */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0; /* Clean sharp images by default */
+}
+
+/* ============================= */
+/* Container */
+/* ============================= */
+.container {
+  width: 90%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+/* ============================= */
+/* Headings Global Styles */
+/* ============================= */
+h1, h2, h3 {
+  font-family: var(--font-family-base);
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* ============================= */
+/* H1 Styles */
+/* ============================= */
+h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: var(--color-primary-dark); /* #6d28d9 */
+}
+
+/* ============================= */
+/* H2 Styles */
+/* ============================= */
+h2 {
+  color: #1e3a8a;                  /* Deep Blue for contrast with purple theme */
+  font-size: 2.2rem;
+  font-weight: 800;
+  border-bottom: 3px solid #3b82f6; /* Bright blue underline for strong emphasis */
+  padding-bottom: 0.7rem;
+  letter-spacing: 0.5px;
+}
+
+/* ============================= */
+/* H3 Styles */
+/* ============================= */
+h3 {
+  color: #1e3a8a;                  /* Matches H2 for consistency */
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+/* ============================= */
+/* Paragraphs */
+/* ============================= */
+p {
+  text-align: center;
+  /* color: var(--color-text-dark);  #1e293b */
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 1.2rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ============================= */
+/* Navigation Bar */
+/* ============================= */
+.navbar {
+  background-color: var(--color-bg-light);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 10000;
+  height: 60px; /* ✅ Fixed, clean height for consistency */
+  transition: background-color var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.navbar-sticky {
+  background-color: #ffffffcc; /* ✅ Slight transparency for sticky effect */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  backdrop-filter: saturate(180%) blur(10px);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 60px; /* ✅ Fixed height for sticky state too */
+  z-index: 10000;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%; /* ✅ Makes content fill the navbar vertically */
+  padding: 0 1.5rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* ============================= */
+/* Logo Styling */
+/* ============================= */
+.logo {
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--color-primary-dark);
+  letter-spacing: 1.5px;
+  user-select: none;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--border-radius);
+  transition: color var(--transition-speed), background-color var(--transition-speed);
+}
+.logo:hover,
+.logo:focus {
+  color: var(--color-primary-light);
+  background-color: rgba(124, 58, 237, 0.1);
+}
+
+/* ============================= */
+/* Navigation Links */
+/* ============================= */
+#nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem; 
+  color: var(--color-grey-medium);
+  cursor: pointer;
+  z-index: 10002;
+  transition: color var(--transition-speed);
+}
+#nav-toggle:hover,
+#nav-toggle:focus {
+  color: var(--color-primary-light);
+  outline: none;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  z-index: 10001;
+}
+
+.nav-menu li a {
+  font-size: 1.1rem;       /* ✅ Slightly larger for bold look */
+  font-weight: 800;       /* ✅ Heavy weight for stronger impact */
+  padding: 0.3rem 0.75rem; /* ✅ Balanced padding for reduced height */
+  color: var(--color-primary-dark);
+  border-radius: var(--border-radius);
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+.nav-menu li a:hover,
+.nav-menu li a:focus {
+  color: var(--color-primary-light);
+  background-color: rgba(124, 58, 237, 0.1);
+  outline: none;
+}
+
+/* ============================= */
+/* Submenu */
+/* ============================= */
+.has-submenu {
+  position: relative;
+}
+
+.submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--color-bg-light);
+  border-radius: var(--border-radius);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+  padding: 0.25rem 0;
+  display: none;
+  min-width: 220px; /* slightly smaller */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateY(10px);
+}
+
+.submenu li a {
+  font-size: 0.95rem;     /* Slightly heavier look */
+  font-weight: 600;      /* Heavier than default */
+  padding: 0.5rem 1.25rem; /* reduced height for submenu items */
+  display: block;
+  color: var(--color-primary-dark);
+}
+.submenu li a:hover,
+.submenu li a:focus {
+  background-color: var(--color-grey-light);
+  color: var(--color-primary-light);
+  outline: none;
+}
+
+/* Show submenu on hover/active */
+.has-submenu:hover > .submenu,
+.has-submenu.open > .submenu,
+.submenu-active {
+  display: block !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  transform: translateY(0) !important;
+}
+
+/* ============================= */
+/* Sticky Navbar Enhancement */
+/* ============================= */
+.navbar-sticky {
+  background-color: #ffffffcc;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  backdrop-filter: saturate(180%) blur(10px);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ============================= */
+/* Scroll-to-top Button */
+/* ============================= */
+#scroll-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  background: var(--color-primary);
+  color: var(--color-text-light);
+  border-radius: 50%;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 6px 15px rgba(124, 58, 237, 0.5); /* softened purple shadow */
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10001;
+  transition: background-color var(--transition-speed), transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+#scroll-top:hover,
+#scroll-top:focus-visible {
+  background-color: var(--color-primary-dark);
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(124, 58, 237, 0.6);
+  outline: none;
+}
+
+#scroll-top:active {
+  transform: scale(0.95);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #scroll-top {
+    transition: none;
+  }
+}
+body:not(.scrolling) #scroll-top {
+  border: 2px solid #fff;
+}
+
+
+/* ============================= */
+/* Accessibility Focus Outlines */
+/* ============================= */
+a:focus,
+button:focus,
+.nav-menu li a:focus,
+.submenu li a:focus,
+#nav-toggle:focus,
+#theme-toggle:focus {
+  outline: 3px solid var(--color-primary-light); /* updated to purple light */
+  outline-offset: 2px;
+}
+
+/* ============================= */
+/* Scrollbar Styling for Submenu */
+/* ============================= */
+.submenu {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.submenu::-webkit-scrollbar {
+  width: 6px;
+}
+
+.submenu::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 6px;
+}
+
+.submenu::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 6px;
+}
+
+.submenu {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) #f1f1f1;
+}
+
+
+/* ======================== */
+/* Button CSS */
+/* ======================== */
+.btn {
+  display: inline-block;
+  padding: 0.9rem 2rem;
+  background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary)); /* Updated purple gradient */
+  color: #ffffff;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  user-select: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.4); /* Purple tone shadow */
+  border: none;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  margin-top: 2rem;
+  outline: 1px solid rgba(255, 255, 255, 0.3); /* subtle white outline for visibility */
+}
+
+.btn:hover,
+.btn:focus {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light)); /* hover gradient */
+  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.5); /* deeper purple shadow on hover */
+  outline: 2px solid rgba(255, 255, 255, 0.5); /* slightly stronger white outline on hover/focus */
+}
+
+
+/* ======================== */
+/* General Section Styling  */
+/* ======================== */
+.section-container {
+  padding: 2rem 1.5rem;
+  max-width: var(--max-width);
+  margin: 25px auto;
+  background: linear-gradient(to right, #f8fafc, #ffffff);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  color: var(--color-text-dark);
+  transition: all var(--transition-speed);
+  text-align: left;
+  font-family: var(--font-family-base);
+  overflow: hidden;
+}
+
+.section-container h2 {
+  font-weight: 800;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: var(--color-primary-dark);
+  position: relative;
+  display: inline-block;
+  user-select: none;
+  transition: color var(--transition-speed);
+}
+
+.section-container h2::after {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 4px;
+  background-color: var(--color-primary-light); /* Updated */
+  bottom: -10px;
+  left: 0;
+  border-radius: 2px;
+  transition: width var(--transition-speed);
+}
+
+.section-container h2:hover::after {
+  width: 100px;
+}
+
+.section-container p,
+.section-container ul {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  color: var(--color-grey-medium);
+  max-width: 850px;
+  margin-left: auto;
+  margin-right: auto;
+  user-select: text;
+}
+
+.section-container p {
+  text-align: center;
+}
+
+.section-container ul {
+  list-style: none;
+  padding-left: 0;
+  text-align: left;
+}
+
+.section-container ul li {
+  margin-bottom: 0.75rem;
+  position: relative;
+  padding-left: 1.5rem;
+  color: var(--color-grey-dark);
+}
+
+.section-container ul li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: var(--color-primary-light); /* Updated to purple light */
+  font-size: 1rem;
+}
+
+/* ================================================
+   Hero Section — Advanced Design with Image Background
+================================================== */
+.hero-section {
+  position: relative;
+  text-align: center;
+  padding: 7rem 1rem 8rem;
+  background: url('../images/hero-background.jpg') center center / cover no-repeat;
+  color: var(--color-text-light);
+  overflow: hidden;
+  animation: fadeInUp 1s ease forwards;
+  opacity: 0;
+}
+
+/* Dark overlay to improve text readability over the background image */
+.hero-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.4));
+  z-index: 0;
+}
+
+/* Ensure all child elements are above the overlay */
+.hero-section * {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Profile Image */
+.hero-container img.profile-image {
+  width: 180px;
+  height: 180px;
+  margin-bottom: 1.5rem;
+  border-radius: 50%;
+  border: 4px solid var(--color-bg-light);
+  object-fit: cover;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.hero-container img.profile-image:hover,
+.hero-container img.profile-image:focus {
+  transform: scale(1.08);
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.55);
+  outline: none;
+}
+
+/* Hero Heading */
+.hero-section h1 {
+  font-weight: 900;
+  font-size: clamp(2.8rem, 6vw, 3.5rem);
+  margin-bottom: 0.8rem;
+  letter-spacing: 2px;
+  color: var(--color-bg-light);
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Profession/Subtitle */
+.hero-section .profession {
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  margin-bottom: 1.5rem;
+  font-style: italic;
+  font-weight: 500;
+  color: rgba(245, 245, 255, 0.95);
+  opacity: 0.9;
+}
+
+/* Bio/Description */
+.hero-section .bio {
+  max-width: 750px;
+  margin: 0 auto;
+  font-size: 1.15rem;
+  line-height: 1.75;
+  color: var(--color-text-light);
+  background: rgba(255, 255, 255, 0.07);
+  padding: 1.5rem 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+  transition: background 0.3s ease;
+}
+
+/* Buttons Group */
+.hero-buttons {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 2.2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.hero-buttons a {
+  display: inline-block;
+  padding: 0.9rem 2.2rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--color-bg-light);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+  transition: transform var(--transition-speed), background var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.hero-buttons a:hover,
+.hero-buttons a:focus {
+  transform: translateY(-2px) scale(1.05);
+  background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary-dark));
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+  outline: none;
+}
+
+/* Social Links */
+.social-links {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.social-links a {
+  font-size: 1.7rem;
+  color: var(--color-text-light);
+  transition: color var(--transition-speed), transform var(--transition-speed);
+}
+
+.social-links a:hover,
+.social-links a:focus {
+  color: var(--color-primary-light);
+  transform: scale(1.1);
+  outline: none;
+}
+
+/* Responsive Enhancements */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 5rem 1rem 6rem;
+  }
+
+  .hero-container img.profile-image {
+    width: 140px;
+    height: 140px;
+  }
+
+  .hero-section h1 {
+    font-size: 2.3rem;
+  }
+
+  .hero-section .bio {
+    padding: 1rem 1.2rem;
+    font-size: 1rem;
+  }
+
+  .hero-buttons a {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* ================================
+   🌌 Footer - Image Background with Animation
+================================= */
+.footer {
+  background: url('../images/hero-background.jpg') center center / cover no-repeat, linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+  position: relative;
+  color: var(--color-text-light);
+  padding: 1.0rem 0.8rem;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Dark overlay for contrast and readability */
+.footer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0,0,0,0.75), rgba(0,0,0,0.4));
+  z-index: 0;
+}
+
+/* Subtle radial pulse animation */
+.footer::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05), transparent 70%);
+  animation: pulse 18s infinite alternate ease-in-out;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  100% {
+    transform: scale(1.1) translate(20px, 15px);
+  }
+}
+
+.footer .container {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* ================================
+   🎨 Footer Links and Social
+================================= */
+.footer ul.list-inline {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.footer ul.list-inline li a,
+.footer .social-footer a {
+  color: var(--color-text-light);
+  font-weight: 500;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer ul.list-inline li a:hover,
+.footer .social-footer a:hover {
+  color: var(--color-primary-light);
+  transform: scale(1.1);
+}
+
+.footer ul.list-inline li a[href^="mailto:"]::before {
+  content: "\f0e0"; /* Font Awesome envelope */
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  margin-right: 0.35rem;
+  font-size: 0.9rem;
+}
+
+.footer .social-footer {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  font-size: 1.5rem;
+}
+
+/* ================================
+   📝 Footer Text
+================================= */
+.footer p.mb-0 {
+  color: var(--color-grey-light);
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+}
+
+/* ================================
+   ⚙️ Fade Animation for Elements
+================================= */
+.footer,
+.footer .container,
+.footer ul.list-inline li a,
+.footer .social-footer a,
+.footer p.mb-0 {
+  animation: fadeInUp 0.8s ease forwards;
+  opacity: 0;
+}
+
+.footer { animation-delay: 0.2s; }
+.footer .container { animation-delay: 0.4s; }
+.footer ul.list-inline li a { animation-delay: 0.6s; }
+.footer .social-footer a { animation-delay: 0.8s; }
+.footer p.mb-0 { animation-delay: 1s; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* ================================
+   📱 Footer Responsive - Reduced Height
+================================= */
+@media (max-width: 768px) {
+  .footer {
+    padding: 1.5rem 1rem; /* ↓ Reduced overall padding */
+  }
+
+  .footer .container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.8rem; /* ↓ Reduced gap between items */
+  }
+  
+  .footer ul.list-inline {
+    justify-content: center;
+    gap: 1rem; /* ↓ Slightly reduced gap between links */
+    margin-bottom: 0.8rem;
+  }
+
+  .footer .social-footer {
+    justify-content: center;
+    margin-top: 0.8rem; /* ↓ Reduced margin */
+  }
+
+  .footer p.mb-0 {
+    margin-top: 1rem; /* ↓ Reduced margin */
+    font-size: 0.8rem;  /* Optional: Slightly smaller font for better compactness */
+  }
+}
+
+
+/* =============================
+   Services Swiper Styles
+============================= */
+
+/* Wrapper for each service slide */
+.service-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1.2rem;
+  text-align: center;
+  background-color: var(--color-bg-light);
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  min-height: 380px; /* ✅ Ensures consistent height */
+}
+
+.service-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Service Icon Styles */
+.service-icon {
+  font-size: 3rem;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+/* Heading for each service */
+.portfolio-heading {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  background-image: var(--color-primary-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: capitalize;
+}
+/* ================================
+   Service Caption
+================================ */
+
+.caption {
+  color: var(--color-grey-medium);
+  font-size: 1rem;
+  line-height: 1.5;
+  max-width: 320px;
+  margin-top: 0.5rem;
+  flex-grow: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  text-align: center;
+  transition: color 0.3s ease;
+}
