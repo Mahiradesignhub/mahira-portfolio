@@ -423,7 +423,7 @@ button:focus,
 /* ======================== */
 /* General Section Styling  */
 /* ======================== */
-.section-container { 
+.section-container {
   padding: 2rem 1.5rem;
   max-width: var(--max-width);
   margin: 25px auto;
